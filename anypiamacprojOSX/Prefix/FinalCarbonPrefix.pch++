@@ -1,0 +1,20 @@
+// ===========================================================================
+//	FinalCarbonPrefix.pch++	©1999-2003 Metrowerks Corporation. All rights reserved.
+// ===========================================================================
+//	Precompiled header source for a Carbon Target
+
+#pragma precompile_target "FinalCarbonHeaders++"
+
+
+#define NDEBUG					1
+
+
+// ---------------------------------------------------------------------------
+//	Common Settings
+
+#include "CommonCarbonPrefix.h"
+
+// ---------------------------------------------------------------------------
+//	PowerPlant and Toolbox Headers
+
+#include <PP_ClassHeaders.cp>

@@ -1,0 +1,17 @@
+// ===========================================================================
+//	DebugCarbonPrefix.pch++	©1999-2003 Metrowerks Corporation. All rights reserved.
+// ===========================================================================
+//	Precompiled header source for a Carbon Target
+
+#pragma precompile_target "DebugCarbonHeaders++"
+
+
+// ---------------------------------------------------------------------------
+//	Common Settings
+
+#include "CommonCarbonPrefix.h"
+
+// ---------------------------------------------------------------------------
+//	PowerPlant and Toolbox Headers
+
+#include <PP_DebugHeaders.cp>
