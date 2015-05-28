@@ -29,7 +29,12 @@ plist {
 		
 		key "CFBundleDevelopmentRegion" value string "English"
 		key "CFBundleInfoDictionaryVersion" value string "6.0"
+#if __MACH__  // __MWMACHLINKER__ doesn't work for some reason
+		// The Mach-O target copies anypiaapp.icns into Contents/Resources
+		key "CFBundleIconFile" value string "anypiaapp.icns"
+#else
 		key "CFBundleIconFile" value string "128"
+#endif
 		key "LSPrefersCarbon" value boolean true
 		key "CFBundleDocumentTypes" value array [
 			dictionary {
