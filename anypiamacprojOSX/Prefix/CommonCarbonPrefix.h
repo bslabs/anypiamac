@@ -24,3 +24,11 @@
 #define PP_Warn_Obsolete_Classes		1
 
 #define PP_Suppress_Notes_221			1
+
+// 'check' is used as a function name in many classes, and this conflicts
+// with the check() macro defined in <AssertMacros.h>
+// Define __ASSERTMACROS__ so this file doesn't get included
+#define __ASSERTMACROS__
+
+
+#include <MSLCarbonPrefix.h>
