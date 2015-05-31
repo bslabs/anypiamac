@@ -4,6 +4,7 @@
 // $Id: DisInsCodeArray.cpp 1.21 2011/07/29 15:26:17EDT 044579 Development  $
 
 #include "DisInsCodeArray.h"
+#include <utility>  // for rel_ops
 
 using namespace std;
 using namespace std::rel_ops;

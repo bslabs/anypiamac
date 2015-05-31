@@ -4,6 +4,7 @@
 // $Id: InsCodeArray.cpp 1.18 2011/07/29 15:29:07EDT 044579 Development  $
 
 #include "InsCodeArray.h"
+#include <utility>  // for rel_ops
 
 using namespace std;
 using namespace std::rel_ops;
