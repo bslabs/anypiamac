@@ -4462,14 +4462,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		32750E1C1B1A50CF006F5B31 /* Imported CodeWarrior Settings */ = {
+		32750E1C1B1A50CF006F5B31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				WARNING_CFLAGS = "-Wno-unknown-pragmas";
 			};
-			name = "Imported CodeWarrior Settings";
+			name = Release;
 		};
-		32750E291B1A50D0006F5B31 /* Imported CodeWarrior Settings */ = {
+		32750E291B1A50D0006F5B31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -4502,7 +4502,7 @@
 				REZ_SUPPRESS_REDECLARED_RESOURCE_TYPE_WARNINGS = NO;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
-			name = "Imported CodeWarrior Settings";
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -4510,18 +4510,18 @@
 		32750E1B1B1A50CF006F5B31 /* Build configuration list for PBXProject "anypiamac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				32750E1C1B1A50CF006F5B31 /* Imported CodeWarrior Settings */,
+				32750E1C1B1A50CF006F5B31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 1;
-			defaultConfigurationName = "Imported CodeWarrior Settings";
+			defaultConfigurationName = Release;
 		};
 		32750E281B1A50D0006F5B31 /* Build configuration list for PBXNativeTarget "Anypia Mach-O" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				32750E291B1A50D0006F5B31 /* Imported CodeWarrior Settings */,
+				32750E291B1A50D0006F5B31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "Imported CodeWarrior Settings";
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
