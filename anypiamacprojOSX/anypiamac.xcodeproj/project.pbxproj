@@ -4465,6 +4465,7 @@
 		32750E1C1B1A50CF006F5B31 /* Imported CodeWarrior Settings */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				WARNING_CFLAGS = "-Wno-unknown-pragmas";
 			};
 			name = "Imported CodeWarrior Settings";
 		};
