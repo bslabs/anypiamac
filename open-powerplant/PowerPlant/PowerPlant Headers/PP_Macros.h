@@ -35,6 +35,11 @@
 
 #define		__PowerPlant__	0x02258000	// Version 2.2.5
 
+// ---------------------------------------------------------------------------
+//      Is this open-powerplant, r21 or higher?
+//      (changes detailed in Updating_Open-PowerPlant.pdf)
+#define PP_OpenPowerPlant_r21_or_higher		1
+
 
 // ---------------------------------------------------------------------------
 //	Target OS

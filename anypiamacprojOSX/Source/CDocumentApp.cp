@@ -251,7 +251,15 @@ CDocumentApp::ChooseDocument()
    PP_StandardDialogs::LFileChooser	chooser;
 
    // Open any/all TEXT files
-	
+#ifdef PP_OpenPowerPlant_r21_or_higher
+   NavDialogCreationOptions*	options = chooser.GetDialogOptions();
+   if (options != nil) {
+      options->optionFlags =	kNavDefaultNavDlogOptions
+           //+ kNavSelectAllReadableItem
+           //+ kNavNoTypePopup
+         + kNavAllFilesInPopup;
+   }
+#else
    NavDialogOptions*	options = chooser.GetDialogOptions();
    if (options != nil) {
       options->dialogOptionFlags =	kNavDefaultNavDlogOptions
@@ -259,6 +267,7 @@ CDocumentApp::ChooseDocument()
            //+ kNavNoTypePopup
          + kNavAllFilesInPopup;
    }
+#endif
 
    if (chooser.AskOpenFile(LFileTypeList(ResType_Text))) {
       AEDescList docList;
