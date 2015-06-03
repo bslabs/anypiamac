@@ -1,0 +1,246 @@
+/*
+ * PP_Xcode.h
+ *
+ * Prefix header file used for Xcode
+ */
+
+// ------- Next 3 lines copied from Constructor_Prefix.pch used by the Constructor Xcode project -----------
+#define _STD std
+#define _CSTD std
+#define __dest_os __mac_os_x
+
+
+// ------- Contents of CommonCarbonPrefix.h -----------
+
+// ===========================================================================
+//	CommonCarbonPrefix.h	©1999-2003 Metrowerks Corporation. All rights reserved.
+// ===========================================================================
+//	Common options for a Carbon Target
+
+// ---------------------------------------------------------------------------
+//	Carbon Target
+
+#define PP_Target_Carbon		1
+
+#define PP_Target_Classic		(!PP_Target_Carbon)
+
+#define TARGET_API_MAC_CARBON	PP_Target_Carbon
+#define TARGET_API_MAC_OS8		PP_Target_Classic
+
+
+// ---------------------------------------------------------------------------
+//	Options
+	
+#define PP_Uses_PowerPlant_Namespace	0
+#define PP_StdDialogs_Option			PP_StdDialogs_NavServicesOnly
+#define PP_Uses_Aqua_MenuBar			1
+
+#define PP_Warn_Obsolete_Classes		1
+
+#define PP_Suppress_Notes_221			1
+
+// 'check' is used as a function name in many classes, and this conflicts
+// with the check() macro defined in <AssertMacros.h>
+// Define __ASSERTMACROS__ so this file doesn't get included
+#define __ASSERTMACROS__
+
+
+#ifndef NDEBUG
+// Define all debugging symbols
+#define Debug_Throw
+#define Debug_Signal
+#endif
+
+// ------- Contents of PP_ClassHeaders.cp -----------
+
+
+// Copyright ©2005, 2006 Freescale Semiconductor, Inc.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+// ===========================================================================
+//	PP_ClassHeaders.cp			PowerPlant 2.2.2	©1995-2005 Metrowerks Inc.
+// ===========================================================================
+//
+//	Source for precompiled header for PowerPlant headers
+//
+//	This file #includes most header files for the PowerPlant library,
+//	as well as most of the Toolbox headers used by the PowerPlant library.
+
+#if __MACH__
+
+// ------- Contents of PP_MacHeadersMach-O.c -----------
+
+// Copyright ÔøΩ2005, 2006 Freescale Semiconductor, Inc.
+// Please see the License for the specific language governing rights and
+// limitations under the License.
+// ===========================================================================
+//	PP_MacHeadersMach-O.c		PowerPlant 2.2.2	ÔøΩ1995-2005 Metrowerks Inc.
+// ===========================================================================
+//
+//	A variation of the standard MacHeaders.c designed for use with
+//	PowerPlant programs.
+
+/*
+ *	Metrowerks-specific definitions
+ *
+ *	These definitions are commonly used but not in Apple's headers. We define
+ *	them in our precompiled header so we can use the Apple headers without
+ *  modification.
+ */
+
+// sean_mcbride: don't mess with fp.h's __NOEXTENSIONS__ on Mac OS X. If defined, things won't compile.
+#if TARGET_RT_MAC_CFM
+	#ifndef __NOEXTENSIONS__
+		#define __NOEXTENSIONS__
+	#endif
+#endif
+
+#ifndef __CF_USE_FRAMEWORK_INCLUDES__
+	#define __CF_USE_FRAMEWORK_INCLUDES__
+#endif
+
+#include <Carbon/Carbon.h>
+
+
+#if 0 /* see if we can get by without these for Mach-O */
+
+	#ifndef PtoCstr
+		#define PtoCstr		p2cstr
+	#endif
+
+	#ifndef CtoPstr
+		#define CtoPstr		c2pstr
+	#endif
+
+	#ifndef PtoCString
+		#define PtoCString	p2cstr
+	#endif
+
+	#ifndef CtoPString
+		#define CtoPString	c2pstr
+	#endif
+
+	#ifndef topLeft
+		#define topLeft(r)	(((Point *) &(r))[0])
+	#endif
+
+	#ifndef botRight
+		#define botRight(r)	(((Point *) &(r))[1])
+	#endif
+
+	#ifndef TRUE
+		#define TRUE		true
+	#endif
+	#ifndef FALSE
+		#define FALSE		false
+	#endif
+
+#endif /* see if we can get by without these for Mach-O */
+
+#else
+#include <PP_MacHeaders.c>			// Toolbox Headers
+#endif
+									// Action Classes
+#include <LAction.h>
+#include <LUndoer.h>
+#include <UTETextAction.h>
+#include <UTEViewTextAction.h>
+									// AppleEvent Classes
+#include <LModelDirector.h>
+#include <LModelObject.h>
+#include <LModelProperty.h>
+#include <UAppleEventsMgr.h>
+#include <UExtractFromAEDesc.h>
+									// Array Classes
+#include <LArray.h>
+#include <LArrayIterator.h>
+#include <LComparator.h>
+#include <LRunArray.h>
+#include <LVariableArray.h>
+#include <TArray.h>
+#include <TArrayIterator.h>
+									// Commander Classes
+#include <LApplication.h>
+#include <LCommander.h>
+#include <LDocApplication.h>
+#include <LDocument.h>
+#include <LSingleDoc.h>
+									// Feature Classes
+#include <LAttachable.h>
+#include <LAttachment.h>
+#include <LBroadcaster.h>
+#include <LDragAndDrop.h>
+#include <LDragTask.h>
+#include <LEventDispatcher.h>
+#include <LListener.h>
+#include <LPeriodical.h>
+#include <LSharable.h>
+									// File & Stream Classes
+#include <LDataStream.h>
+#include <LFile.h>
+#include <LFileStream.h>
+#include <LHandleStream.h>
+#include <LStream.h>
+									// Pane Classes
+#include <LButton.h>
+#include <LCaption.h>
+#include <LCicnButton.h>
+#include <LControl.h>
+#include <LDialogBox.h>
+#include <LEditField.h>
+#include <LFocusBox.h>
+#include <LGrafPortView.h>
+#include <LListBox.h>
+#include <LOffscreenView.h>
+#include <LPane.h>
+#include <LPicture.h>
+#include <LPlaceHolder.h>
+#include <LPrintout.h>
+#include <LRadioGroupView.h>
+#include <LScroller.h>
+#include <LStdControl.h>
+#include <LTabGroupView.h>
+#include <LTableView.h>
+#include <LTextEditView.h>
+#include <LView.h>
+#include <LWindow.h>
+#include <UGWorld.h>
+#include <UQuickTime.h>
+									// PowerPlant Headers
+#include <PP_Constants.h>
+#include <PP_KeyCodes.h>
+#include <PP_Macros.h>
+#include <PP_Messages.h>
+#include <PP_Prefix.h>
+#include <PP_Resources.h>
+#include <PP_Types.h>
+									// Support Classes
+#include <LClipboard.h>
+#include <LFileTypeList.h>
+#include <LGrowZone.h>
+#include <LMenu.h>
+#include <LMenuBar.h>
+#include <LRadioGroup.h>
+#include <LString.h>
+#include <LTabGroup.h>
+#include <UDesktop.h>
+									// Utility Classes
+#include <UAttachments.h>
+#include <UCursor.h>
+#include <UDebugging.h>
+#include <UDrawingState.h>
+#include <UDrawingUtils.h>
+#include <UEnvironment.h>
+#include <UException.h>
+#include <UKeyFilters.h>
+#include <UMemoryMgr.h>
+#include <UModalDialogs.h>
+#include <UPrinting.h>
+#include <UReanimator.h>
+#include <URegions.h>
+#include <URegistrar.h>
+#include <UScrap.h>
+#include <UScreenPort.h>
+#include <UTextEdit.h>
+#include <UTextTraits.h>
+#include <UWindows.h>
