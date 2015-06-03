@@ -8,6 +8,8 @@
 
 using namespace std;
 
+/// <summary>Last year that tax rates change.</summary>
+const int TaxRates::LAST_TAX_RATE_YEAR;
 /// <summary>Historical OASI employee/employer net rates, 1937-2013.
 /// </summary>
 const double TaxRates::oasieeerrate[] = {

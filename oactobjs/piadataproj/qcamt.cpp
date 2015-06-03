@@ -10,6 +10,9 @@
 
 using namespace std;
 
+// <summary>The year when automatic increases started for the quarter
+// of coverage amount.</summary>
+const int Qcamt::AUTO_YEAR;
 // <summary>The quarter of coverage amount in 1978.</summary>
 const double Qcamt::qcamt1978 = 250.0;
 // <summary>The quarter of coverage amount prior to 1978.</summary>

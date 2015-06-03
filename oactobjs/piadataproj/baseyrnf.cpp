@@ -5,6 +5,9 @@
 
 #include "BaseYearNonFile.h"
 
+// Define BaseYearNonFile::YEAR, gcc needs it defined in a .cp file to stop undefined symbol errors
+const int BaseYearNonFile::YEAR;
+
 /// <summary>Initializes base year.</summary>
 BaseYearNonFile::BaseYearNonFile() : BaseYear()
 {

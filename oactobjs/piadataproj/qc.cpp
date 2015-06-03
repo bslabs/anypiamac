@@ -11,6 +11,9 @@
 
 using namespace std;
 
+/// <summary>The maximum number of qcs in one year (4).</summary>
+const unsigned int Qc::MAXQCSINYEAR;
+
 /// <summary>Checks annual quarters of coverage for one year.</summary>
 ///
 /// <exception cref="PiaException"><see cref="PiaException"/> of type
