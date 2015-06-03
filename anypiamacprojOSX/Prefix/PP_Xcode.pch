@@ -45,12 +45,6 @@
 #define __ASSERTMACROS__
 
 
-#ifndef NDEBUG
-// Define all debugging symbols
-#define Debug_Throw
-#define Debug_Signal
-#endif
-
 // ------- Contents of PP_ClassHeaders.cp -----------
 
 

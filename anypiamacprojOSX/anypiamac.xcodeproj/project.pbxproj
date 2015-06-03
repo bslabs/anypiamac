@@ -4504,6 +4504,53 @@
 			};
 			name = Release;
 		};
+		32FD60DA1B1EDCAD0010CCC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_ALTIVEC_EXTENSIONS = NO;
+				GCC_CHAR_IS_UNSIGNED_CHAR = NO;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.cpp;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix/PP_Xcode.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					Debug_Throw,
+					Debug_Signal,
+					"$(inherited)",
+				);
+				GCC_REUSE_STRINGS = NO;
+				GCC_SHORT_ENUMS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = NO;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"../open-powerplant/PowerPlant/**",
+					../boost_1_33_1,
+					/Developer/Headers/FlatCarbon,
+				);
+				OTHER_CFLAGS = (
+					"-fno-inline",
+					"-fno-inline-functions",
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Anypia;
+				REZ_SCRIPT_TYPE = Roman;
+				REZ_SUPPRESS_REDECLARED_RESOURCE_TYPE_WARNINGS = NO;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		32FD60DB1B1EDCAD0010CCC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				WARNING_CFLAGS = "-Wno-unknown-pragmas";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4511,6 +4558,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32750E1C1B1A50CF006F5B31 /* Release */,
+				32FD60DB1B1EDCAD0010CCC4 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 1;
 			defaultConfigurationName = Release;
@@ -4519,6 +4567,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				32750E291B1A50D0006F5B31 /* Release */,
+				32FD60DA1B1EDCAD0010CCC4 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
