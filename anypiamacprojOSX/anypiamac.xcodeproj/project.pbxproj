@@ -1109,6 +1109,7 @@
 		32FD5FDF1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */; };
 		32FD5FF91B1C3BEF0010CCC4 /* OutputLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FF81B1C3BEF0010CCC4 /* OutputLog.cpp */; };
 		32FD613B1B2024180010CCC4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32FD613A1B2024180010CCC4 /* Info.plist */; };
+		32FD618C1B2027D30010CCC4 /* anypiaapp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 32FD618B1B2027D30010CCC4 /* anypiaapp.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2033,6 +2034,7 @@
 		32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleAnnualRW.cpp; path = ../oactobjs/miscproj/DoubleAnnualRW.cpp; sourceTree = SOURCE_ROOT; };
 		32FD5FF81B1C3BEF0010CCC4 /* OutputLog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = OutputLog.cpp; path = ../oactobjs/miscproj/OutputLog.cpp; sourceTree = SOURCE_ROOT; };
 		32FD613A1B2024180010CCC4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		32FD618B1B2027D30010CCC4 /* anypiaapp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = anypiaapp.icns; path = Resources/anypiaapp.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2359,6 +2361,7 @@
 		32750F2F1B1A50D0006F5B31 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32FD618B1B2027D30010CCC4 /* anypiaapp.icns */,
 				32750F321B1A50D0006F5B31 /* AppResources.ppob */,
 				32750F331B1A50D0006F5B31 /* AppResources.r */,
 				32FD613A1B2024180010CCC4 /* Info.plist */,
@@ -3983,6 +3986,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32FD613B1B2024180010CCC4 /* Info.plist in Resources */,
+				32FD618C1B2027D30010CCC4 /* anypiaapp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
