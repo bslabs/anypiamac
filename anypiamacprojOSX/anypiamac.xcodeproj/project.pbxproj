@@ -4465,6 +4465,7 @@
 		32750E1C1B1A50CF006F5B31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WARNING_CFLAGS = "-Wno-unknown-pragmas";
 			};
 			name = Release;
@@ -4473,6 +4474,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					ppc,
+					i386,
+				);
 				GCC_ALTIVEC_EXTENSIONS = NO;
 				GCC_CHAR_IS_UNSIGNED_CHAR = NO;
 				GCC_ENABLE_CPP_RTTI = YES;
@@ -4551,6 +4556,7 @@
 		32FD60DB1B1EDCAD0010CCC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WARNING_CFLAGS = "-Wno-unknown-pragmas";
 			};
 			name = Debug;
