@@ -2033,7 +2033,7 @@
 		32FD5FD61B1C3A6A0010CCC4 /* LFocusBox.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = LFocusBox.cp; path = "../open-powerplant/PowerPlant/Pane Classes/LFocusBox.cp"; sourceTree = SOURCE_ROOT; };
 		32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleAnnualRW.cpp; path = ../oactobjs/miscproj/DoubleAnnualRW.cpp; sourceTree = SOURCE_ROOT; };
 		32FD5FF81B1C3BEF0010CCC4 /* OutputLog.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = OutputLog.cpp; path = ../oactobjs/miscproj/OutputLog.cpp; sourceTree = SOURCE_ROOT; };
-		32FD613A1B2024180010CCC4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		32FD613A1B2024180010CCC4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		32FD618B1B2027D30010CCC4 /* anypiaapp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = anypiaapp.icns; path = Resources/anypiaapp.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -3970,10 +3970,12 @@
 		32750E1A1B1A50CF006F5B31 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 32750E1B1B1A50CF006F5B31 /* Build configuration list for PBXProject "anypiamac" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 0;
 			mainGroup = 32750E181B1A50CF006F5B31;
 			productRefGroup = 32750E261B1A50D0006F5B31 /* Products */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				32750E241B1A50CF006F5B31 /* Anypia Mach-O */,
 			);
