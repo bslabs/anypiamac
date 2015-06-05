@@ -1108,7 +1108,6 @@
 		32FD5FD71B1C3A6A0010CCC4 /* LFocusBox.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FD61B1C3A6A0010CCC4 /* LFocusBox.cp */; };
 		32FD5FDF1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */; };
 		32FD5FF91B1C3BEF0010CCC4 /* OutputLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FF81B1C3BEF0010CCC4 /* OutputLog.cpp */; };
-		32FD613B1B2024180010CCC4 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32FD613A1B2024180010CCC4 /* Info.plist */; };
 		32FD618C1B2027D30010CCC4 /* anypiaapp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 32FD618B1B2027D30010CCC4 /* anypiaapp.icns */; };
 /* End PBXBuildFile section */
 
@@ -3987,7 +3986,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32FD613B1B2024180010CCC4 /* Info.plist in Resources */,
 				32FD618C1B2027D30010CCC4 /* anypiaapp.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
