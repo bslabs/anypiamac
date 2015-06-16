@@ -389,7 +389,6 @@
 		3275134D1B1A50D1006F5B31 /* CTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750E781B1A50D0006F5B31 /* CTextView.h */; };
 		3275134E1B1A50D1006F5B31 /* CWagebaseDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750E791B1A50D0006F5B31 /* CWagebaseDialog.h */; };
 		3275134F1B1A50D1006F5B31 /* CWorkerInfoDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750E7A1B1A50D0006F5B31 /* CWorkerInfoDialog.h */; };
-		327513501B1A50D1006F5B31 /* GetParent.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750E991B1A50D0006F5B31 /* GetParent.h */; };
 		327513511B1A50D1006F5B31 /* OutMac.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750EC31B1A50D0006F5B31 /* OutMac.h */; };
 		327513521B1A50D1006F5B31 /* CAnnearnDialog.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F371B1A50D0006F5B31 /* CAnnearnDialog.cp */; };
 		327513531B1A50D1006F5B31 /* CAssumptionsDialog.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F381B1A50D0006F5B31 /* CAssumptionsDialog.cp */; };
@@ -421,7 +420,6 @@
 		3275136D1B1A50D1006F5B31 /* CTextView.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F511B1A50D0006F5B31 /* CTextView.cp */; };
 		3275136E1B1A50D1006F5B31 /* CWagebaseDialog.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F521B1A50D0006F5B31 /* CWagebaseDialog.cp */; };
 		3275136F1B1A50D1006F5B31 /* CWorkerInfoDialog.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F531B1A50D0006F5B31 /* CWorkerInfoDialog.cp */; };
-		327513701B1A50D1006F5B31 /* GetParent.c in Sources */ = {isa = PBXBuildFile; fileRef = 32750F541B1A50D0006F5B31 /* GetParent.c */; };
 		327513711B1A50D1006F5B31 /* OutMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F551B1A50D0006F5B31 /* OutMac.cpp */; };
 		327513721B1A50D1006F5B31 /* dbleann.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32750F671B1A50D0006F5B31 /* dbleann.cpp */; };
 		327513731B1A50D1006F5B31 /* dbleann.h in Headers */ = {isa = PBXBuildFile; fileRef = 32750E7E1B1A50D0006F5B31 /* dbleann.h */; };
@@ -1573,7 +1571,6 @@
 		32750E961B1A50D0006F5B31 /* FrozMinPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FrozMinPage.h; path = ../oactobjs/piaoutproj/FrozMinPage.h; sourceTree = SOURCE_ROOT; };
 		32750E971B1A50D0006F5B31 /* frzyrs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = frzyrs.h; path = ../oactobjs/frzyrs.h; sourceTree = SOURCE_ROOT; };
 		32750E981B1A50D0006F5B31 /* genfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = genfile.h; path = ../oactobjs/genfile.h; sourceTree = SOURCE_ROOT; };
-		32750E991B1A50D0006F5B31 /* GetParent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GetParent.h; path = Source/GetParent.h; sourceTree = SOURCE_ROOT; };
 		32750E9A1B1A50D0006F5B31 /* inscode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = inscode.h; path = ../oactobjs/inscode.h; sourceTree = SOURCE_ROOT; };
 		32750E9B1B1A50D0006F5B31 /* InsCodeArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InsCodeArray.h; path = ../oactobjs/InsCodeArray.h; sourceTree = SOURCE_ROOT; };
 		32750E9C1B1A50D0006F5B31 /* InsuredPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InsuredPage.h; path = ../oactobjs/piaoutproj/InsuredPage.h; sourceTree = SOURCE_ROOT; };
@@ -1753,7 +1750,6 @@
 		32750F511B1A50D0006F5B31 /* CTextView.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CTextView.cp; path = Source/CTextView.cp; sourceTree = SOURCE_ROOT; };
 		32750F521B1A50D0006F5B31 /* CWagebaseDialog.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CWagebaseDialog.cp; path = Source/CWagebaseDialog.cp; sourceTree = SOURCE_ROOT; };
 		32750F531B1A50D0006F5B31 /* CWorkerInfoDialog.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CWorkerInfoDialog.cp; path = Source/CWorkerInfoDialog.cp; sourceTree = SOURCE_ROOT; };
-		32750F541B1A50D0006F5B31 /* GetParent.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = GetParent.c; path = Source/GetParent.c; sourceTree = SOURCE_ROOT; };
 		32750F551B1A50D0006F5B31 /* OutMac.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = OutMac.cpp; path = Source/OutMac.cpp; sourceTree = SOURCE_ROOT; };
 		32750F581B1A50D0006F5B31 /* date_generators.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = date_generators.cpp; path = ../boost_1_33_1/libs/date_time/src/gregorian/date_generators.cpp; sourceTree = SOURCE_ROOT; };
 		32750F591B1A50D0006F5B31 /* greg_month.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = greg_month.cpp; path = ../boost_1_33_1/libs/date_time/src/gregorian/greg_month.cpp; sourceTree = SOURCE_ROOT; };
@@ -2195,7 +2191,6 @@
 				32750E961B1A50D0006F5B31 /* FrozMinPage.h */,
 				32750E971B1A50D0006F5B31 /* frzyrs.h */,
 				32750E981B1A50D0006F5B31 /* genfile.h */,
-				32750E991B1A50D0006F5B31 /* GetParent.h */,
 				32750E9A1B1A50D0006F5B31 /* inscode.h */,
 				32750E9B1B1A50D0006F5B31 /* InsCodeArray.h */,
 				32750E9C1B1A50D0006F5B31 /* InsuredPage.h */,
@@ -2401,7 +2396,6 @@
 				32750F511B1A50D0006F5B31 /* CTextView.cp */,
 				32750F521B1A50D0006F5B31 /* CWagebaseDialog.cp */,
 				32750F531B1A50D0006F5B31 /* CWorkerInfoDialog.cp */,
-				32750F541B1A50D0006F5B31 /* GetParent.c */,
 				32750F551B1A50D0006F5B31 /* OutMac.cpp */,
 			);
 			name = Source;
@@ -3319,7 +3313,6 @@
 				3275134D1B1A50D1006F5B31 /* CTextView.h in Headers */,
 				3275134E1B1A50D1006F5B31 /* CWagebaseDialog.h in Headers */,
 				3275134F1B1A50D1006F5B31 /* CWorkerInfoDialog.h in Headers */,
-				327513501B1A50D1006F5B31 /* GetParent.h in Headers */,
 				327513511B1A50D1006F5B31 /* OutMac.h in Headers */,
 				327513631B1A50D1006F5B31 /* CIntroduction.h in Headers */,
 				327513731B1A50D1006F5B31 /* dbleann.h in Headers */,
@@ -4047,7 +4040,6 @@
 				3275136D1B1A50D1006F5B31 /* CTextView.cp in Sources */,
 				3275136E1B1A50D1006F5B31 /* CWagebaseDialog.cp in Sources */,
 				3275136F1B1A50D1006F5B31 /* CWorkerInfoDialog.cp in Sources */,
-				327513701B1A50D1006F5B31 /* GetParent.c in Sources */,
 				327513711B1A50D1006F5B31 /* OutMac.cpp in Sources */,
 				327513721B1A50D1006F5B31 /* dbleann.cpp in Sources */,
 				327513741B1A50D1006F5B31 /* FormatString.cpp in Sources */,

@@ -62,7 +62,6 @@
 #include "PiaException.h"
 #include "Resource.h"
 #include "FormatString.h"
-#include "GetParent.h"
 #include "OutMac.h"
 #include "UserAssumptions.h"
 #include "piaparmsAny.h"
@@ -195,18 +194,59 @@ void CTextDocument::OpenFile(
 	
    // Read the file into the pia data structures
    ifstream in;  // input stream for reading case
-   string cstring;  // temporary string
    
    // get the full pathname of the chosen filespec
-   unsigned char *p = (unsigned char *) GetFullPathName(inFileSpec);
-   char c[1024];
-   memcpy(c, p+1, p[0]);
-   c[p[0]] = 0;
-   genfile.setCorename(c);
+   {
+      // first, convert the FSSpec to an FSRef
+      FSRef fsRef;
+      OSErr err = FSpMakeFSRef(&inFileSpec, &fsRef);
+
+      if (err != noErr)
+      {
+         messageDialog("OpenFile(): could not convert to FSRef", this);
+         return;
+      }
+
+      // now convert the FSRef to a CFURL
+      CFURLRef url = CFURLCreateFromFSRef(kCFAllocatorDefault, &fsRef);
+      if (url == NULL)
+      {
+         messageDialog("OpenFile(): creating CFURL failed", this);
+         return;
+      }
+
+      // and get a file system path (either HFS+ or POSIX) for the CFURL
+      // standard C++ I/O is used by genfile.
+      // for a Mach-O binary (using the BSD libc), those functions use POSIX paths ('/' path separator)
+      // for PEF binaries (using the CodeWarrior MSL libc), HFS+ paths are needed (':' path separator)
+#if __MACH__
+      CFURLPathStyle pathStyle = kCFURLPOSIXPathStyle;
+#else
+      CFURLPathStyle pathStyle = kCFURLHFSPathStyle;
+#endif
+
+      CFStringRef path = CFURLCopyFileSystemPath(url, pathStyle);
+      CFRelease(url);
+      if (path == NULL)
+      {
+         messageDialog("OpenFile(): creating CFString failed", this);
+         return;
+      }
+
+      // copy the CFString to a buffer
+      char c[1024];
+      CFStringGetCString(path, c, sizeof(c), kCFStringEncodingUTF8);
+      c[sizeof(c)-1] = '\0';
+
+      CFRelease(path);
+
+      genfile.setCorename(c);
+   }
 
    try {
       genfile.openin(in);
    } catch (PiaException e) {
+      string cstring;  // temporary string
       AfxFormatString1(cstring, PIA_IDS_OPENERR,
          genfile.getPathname().c_str());
       messageDialog(cstring.c_str(), this);
@@ -303,18 +343,67 @@ CTextDocument::DoAESave(
 void CTextDocument::DoSave()
 {
    ofstream out;  // output stream for saving case
-   string cstring;  // temporary string
 
    FSSpec outFileSpec;
 
    mFile->GetSpecifier(outFileSpec);
 
+   // get the full pathname of the chosen filespec
+   {
+      // first, convert the FSSpec to an FSRef
+      FSRef fsRef;
+      OSErr err = FSpMakeFSRef(&outFileSpec, &fsRef);
+
+      if (err != noErr)
+      {
+         messageDialog("DoSave(): could not convert to FSRef", this);
+         return;
+      }
+
+      // now convert the FSRef to a CFURL
+      CFURLRef url = CFURLCreateFromFSRef(kCFAllocatorDefault, &fsRef);
+      if (url == NULL)
+      {
+         messageDialog("DoSave(): creating CFURL failed", this);
+         return;
+      }
+
+      // and get a file system path (either HFS+ or POSIX) for the CFURL
+      // standard C++ I/O is used by genfile.
+      // for a Mach-O binary (using the BSD libc), those functions use POSIX paths ('/' path separator)
+      // for PEF binaries (using the CodeWarrior MSL libc), HFS+ paths are needed (':' path separator)
+#if __MACH__
+      CFURLPathStyle pathStyle = kCFURLPOSIXPathStyle;
+#else
+      CFURLPathStyle pathStyle = kCFURLHFSPathStyle;
+#endif
+
+      CFStringRef path = CFURLCopyFileSystemPath(url, pathStyle);
+      CFRelease(url);
+      if (path == NULL)
+      {
+         messageDialog("DoSave(): creating CFString failed", this);
+         return;
+      }
+
+      // copy the CFString to a buffer
+      char c[1024];
+      CFStringGetCString(path, c, sizeof(c), kCFStringEncodingUTF8);
+      c[sizeof(c)-1] = '\0';
+
+      CFRelease(path);
+
+      genfile.setCorename(c);
+   }
+
+#if 0
    // Get the full pathname of the chosen filespec
    unsigned char *p = (unsigned char *) GetFullPathName(outFileSpec);
    char c[1024];
    memcpy(c, p+1, p[0]);
    c[p[0]] = 0;
    genfile.setCorename(c);
+#endif
 
    try {
       const DateMoyr entDate =
@@ -340,6 +429,7 @@ void CTextDocument::DoSave()
       mTextView->SetDirty(false);
       return;
    } catch (PiaException& e) {
+      string cstring;  // temporary string
       AfxFormatString1(cstring, PIA_IDS_OUTFILE,
          genfile.getPathname().c_str());
       messageDialog(cstring.c_str(), this);
