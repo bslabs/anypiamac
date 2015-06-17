@@ -33,12 +33,18 @@
 			<array>
 				<string>TEXT</string>
 			</array>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>pia</string>
+			</array>
 			<key>CFBundleTypeName</key>
 			<string>Document</string>
 			<key>CFBundleTypeIconFile</key>
 			<string>anypiafile.icns</string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
 		</dict>
 	</array>
 </dict>
