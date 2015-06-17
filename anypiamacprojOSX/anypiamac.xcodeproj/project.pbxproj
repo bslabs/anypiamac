@@ -1102,6 +1102,7 @@
 		32751AE21B1AE8A5006F5B31 /* UTEViewTextAction.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32751ADC1B1AE8A5006F5B31 /* UTEViewTextAction.cp */; };
 		32751AE31B1AE8A5006F5B31 /* UTETextAction.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32751ADD1B1AE8A5006F5B31 /* UTETextAction.cp */; };
 		32751AE41B1AE8A5006F5B31 /* UTEViewTextAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 32751ADE1B1AE8A5006F5B31 /* UTEViewTextAction.h */; };
+		32D412111B31428700DAE7F3 /* anypiafile.icns in Resources */ = {isa = PBXBuildFile; fileRef = 32D412101B31428700DAE7F3 /* anypiafile.icns */; };
 		32FD5FCD1B1C3A370010CCC4 /* LStdPushButtonImp.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FCC1B1C3A370010CCC4 /* LStdPushButtonImp.cp */; };
 		32FD5FD71B1C3A6A0010CCC4 /* LFocusBox.cp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FD61B1C3A6A0010CCC4 /* LFocusBox.cp */; };
 		32FD5FDF1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */; };
@@ -2024,6 +2025,7 @@
 		32751ADC1B1AE8A5006F5B31 /* UTEViewTextAction.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = UTEViewTextAction.cp; path = "../open-powerplant/PowerPlant/Action Classes/UTEViewTextAction.cp"; sourceTree = SOURCE_ROOT; };
 		32751ADD1B1AE8A5006F5B31 /* UTETextAction.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = UTETextAction.cp; path = "../open-powerplant/PowerPlant/Action Classes/UTETextAction.cp"; sourceTree = SOURCE_ROOT; };
 		32751ADE1B1AE8A5006F5B31 /* UTEViewTextAction.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UTEViewTextAction.h; path = "../open-powerplant/PowerPlant/Action Classes/UTEViewTextAction.h"; sourceTree = SOURCE_ROOT; };
+		32D412101B31428700DAE7F3 /* anypiafile.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = anypiafile.icns; path = Resources/anypiafile.icns; sourceTree = "<group>"; };
 		32FD5FCC1B1C3A370010CCC4 /* LStdPushButtonImp.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = LStdPushButtonImp.cp; path = "../open-powerplant/PowerPlant/Appearance Classes/Std Implementations/LStdPushButtonImp.cp"; sourceTree = SOURCE_ROOT; };
 		32FD5FD61B1C3A6A0010CCC4 /* LFocusBox.cp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = LFocusBox.cp; path = "../open-powerplant/PowerPlant/Pane Classes/LFocusBox.cp"; sourceTree = SOURCE_ROOT; };
 		32FD5FDE1B1C3AE90010CCC4 /* DoubleAnnualRW.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = DoubleAnnualRW.cpp; path = ../oactobjs/miscproj/DoubleAnnualRW.cpp; sourceTree = SOURCE_ROOT; };
@@ -2356,6 +2358,7 @@
 			isa = PBXGroup;
 			children = (
 				32FD618B1B2027D30010CCC4 /* anypiaapp.icns */,
+				32D412101B31428700DAE7F3 /* anypiafile.icns */,
 				32750F321B1A50D0006F5B31 /* AppResources.ppob */,
 				32750F331B1A50D0006F5B31 /* AppResources.r */,
 				32FD613A1B2024180010CCC4 /* Info.plist */,
@@ -3980,6 +3983,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32FD618C1B2027D30010CCC4 /* anypiaapp.icns in Resources */,
+				32D412111B31428700DAE7F3 /* anypiafile.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

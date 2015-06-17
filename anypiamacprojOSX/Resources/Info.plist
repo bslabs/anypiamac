@@ -34,9 +34,9 @@
 			<key>CFBundleTypeName</key>
 			<string>Document</string>
 			<key>CFBundleTypeIconFile</key>
-			<string>129</string>
+			<string>anypiafile.icns</string>
 			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
+			<string>Editor</string>
 		</dict>
 	</array>
 </dict>
