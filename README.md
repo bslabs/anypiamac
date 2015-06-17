@@ -20,9 +20,9 @@ Xcode 2.5 is what I've been using, newer Xcode versions may need SDK/compiler ve
 To build:
 
 1. Download boost_1_33_1.zip and extract it into the root of the repository
-2. *CodeWarrior only* In boost_1_33_1/boost/date_time/local_time/local_time_types.hpp,
-wrap the line 'typedef date_time::microsec_clock<local_date_time> local_microsec_clock;'
-in an #ifdef for BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK
+2. **CodeWarrior only** In `boost_1_33_1/boost/date_time/local_time/local_time_types.hpp`,
+wrap the line `typedef date_time::microsec_clock<local_date_time> local_microsec_clock;`
+in an #ifdef for `BOOST_DATE_TIME_HAS_HIGH_PRECISION_CLOCK`
 3. Launch and make anypiamacprojOSX/anypiamac.mcp or anypiamac.xcodeproj
 
 There is no warranty. Use at your own risk.
