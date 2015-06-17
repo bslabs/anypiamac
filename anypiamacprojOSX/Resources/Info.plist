@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleIdentifier</key>
 	<string>gov.ssa.anypia</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleName</key>
 	<string>Anypia</string>
 	<key>CFBundleGetInfoString</key>
