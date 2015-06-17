@@ -9,9 +9,9 @@
 	<key>CFBundleName</key>
 	<string>Anypia</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Anypia version 1.0</string>
+	<string>Anypia version 2015.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>Anypia version 1.0</string>
+	<string>2015.1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
