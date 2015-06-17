@@ -5,6 +5,11 @@ available from http://www.ssa.gov/OACT/anypia/anypia.html
 
 I (Brendan Shanks) ported the 2015.1 version to Xcode and Intel.
 
+Note: `.pia` files created with older Mac versions of the Detailed Calculator
+must be converted to use UNIX line endings before this version can read them.
+This can be done by opening the `.pia` file in TextWrangler, Xcode, or another text editor
+and re-saving the file with UNIX line endings (LF) rather than Mac line endings (CR)
+
 NOTICE: I am not an employee of the Social Security Administration and
 this source code/binary is provided with NO WARRANTY and NO GUARANTEE OF ACCURACY
 
