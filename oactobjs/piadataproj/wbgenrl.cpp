@@ -1,7 +1,7 @@
 // Functions for the <see cref="WageBaseGeneral"/> class - parent of classes
 // that manage wage base projections.
 
-// $Id: wbgenrl.cpp 1.27 2011/10/26 11:07:32EDT 044579 Development  $
+// $Id: wbgenrl.cpp 1.28 2015/07/16 07:57:49EDT 729915 Development  $
 
 #include <cmath>  // for floor
 #include "wbgenrl.h"
@@ -113,7 +113,7 @@ const DoubleAnnual& cpi, int firstYeart, int lastYeart )
         baseun = 45000.0 * factor;
       }
       else {
-        baseun = (wageBaseInd < 2) ? 60600.0 * factor : 999999999.0;
+        baseun = (wageBaseInd < 2) ? 60600.0 * factor : 99999999.0;
       }
     }
     // handle ad hoc increases 1979-81
