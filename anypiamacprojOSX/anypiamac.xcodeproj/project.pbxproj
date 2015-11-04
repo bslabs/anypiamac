@@ -1446,9 +1446,9 @@
 		32620DFA1B1C301B00899466 /* TTimerTask.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TTimerTask.h; path = "../open-powerplant/PowerPlant/Support Classes/TTimerTask.h"; sourceTree = SOURCE_ROOT; };
 		32620DFE1B1C303200899466 /* UTextEdit.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UTextEdit.h; path = "../open-powerplant/PowerPlant/Utility Classes/UTextEdit.h"; sourceTree = SOURCE_ROOT; };
 		32620E031B1C304B00899466 /* UException.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UException.h; path = "../open-powerplant/PowerPlant/Utility Classes/UException.h"; sourceTree = SOURCE_ROOT; };
-		32620E281B1C314800899466 /* LFileChooser.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; name = LFileChooser.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/LFileChooser.i"; sourceTree = SOURCE_ROOT; };
-		32620E291B1C314800899466 /* LFileDesignator.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; name = LFileDesignator.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/LFileDesignator.i"; sourceTree = SOURCE_ROOT; };
-		32620E2C1B1C314F00899466 /* UStandardDialogs.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.interfacer; name = UStandardDialogs.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/UStandardDialogs.i"; sourceTree = SOURCE_ROOT; };
+		32620E281B1C314800899466 /* LFileChooser.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; name = LFileChooser.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/LFileChooser.i"; sourceTree = SOURCE_ROOT; };
+		32620E291B1C314800899466 /* LFileDesignator.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; name = LFileDesignator.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/LFileDesignator.i"; sourceTree = SOURCE_ROOT; };
+		32620E2C1B1C314F00899466 /* UStandardDialogs.i */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c.preprocessed; name = UStandardDialogs.i; path = "../open-powerplant/PowerPlant/Standard Dialogs/UStandardDialogs.i"; sourceTree = SOURCE_ROOT; };
 		32620E2E1B1C316000899466 /* UClassicDialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UClassicDialogs.h; path = "../open-powerplant/PowerPlant/Standard Dialogs/UClassicDialogs.h"; sourceTree = SOURCE_ROOT; };
 		32620E2F1B1C316000899466 /* UConditionalDialogs.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UConditionalDialogs.h; path = "../open-powerplant/PowerPlant/Standard Dialogs/UConditionalDialogs.h"; sourceTree = SOURCE_ROOT; };
 		32620E3E1B1C31AF00899466 /* UTBAccessors.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = UTBAccessors.h; path = "../open-powerplant/PowerPlant/Utility Classes/UTBAccessors.h"; sourceTree = SOURCE_ROOT; };
@@ -3966,7 +3966,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 32750E1B1B1A50CF006F5B31 /* Build configuration list for PBXProject "anypiamac" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 32750E181B1A50CF006F5B31;
 			productRefGroup = 32750E261B1A50D0006F5B31 /* Products */;
 			projectDirPath = "";
@@ -4461,6 +4468,7 @@
 		32750E1C1B1A50CF006F5B31 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				WARNING_CFLAGS = "-Wno-unknown-pragmas";
