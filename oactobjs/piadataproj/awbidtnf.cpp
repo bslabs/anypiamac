@@ -1,7 +1,7 @@
 // Functions of the <see cref="AwbiDataNonFile"/> class to manage historical
 // Social Security parameters stored with the code.
 //
-// $Id: awbidtnf.cpp 1.44 2015/01/14 09:24:23EST 277133 Development  $
+// $Id: awbidtnf.cpp 1.45 2016/01/11 08:51:04EST 277133 Development  $
 
 #include "AwbiDataNonFile.h"
 #include "PiaException.h"
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// <summary>Benefit increases, 1951-2014.</summary>
+// <summary>Benefit increases, 1951-2015.</summary>
 const double AwbiDataNonFile::cpiincData[] = {
    0.0, 12.5,  0.0, 13.0,  0.0,  0.0,  0.0,  0.0,  7.0,  0.0,
    0.0,  0.0,  0.0,  0.0,  7.0,  0.0,  0.0, 13.0,  0.0, 15.0,
@@ -18,10 +18,10 @@ const double AwbiDataNonFile::cpiincData[] = {
   11.2,  7.4,  3.5,  3.5,  3.1,  1.3,  4.2,  4.0,  4.7,  5.4,
    3.7,  3.0,  2.6,  2.8,  2.6,  2.9,  2.1,  1.3,  2.4,  3.5,
    2.6,  1.4,  2.1,  2.7,  4.1,  3.3,  2.3,  5.8,  0.0,  0.0,
-   3.6,  1.7,  1.5,  1.7
+   3.6,  1.7,  1.5,  1.7,  0.0
 };
 
-// <summary>Average wage index, 1937-2013.</summary>
+// <summary>Average wage index, 1937-2014.</summary>
 const double AwbiDataNonFile::fqData[] = {
              1137.96,  1053.24,  1142.36,  1195.00,
    1276.04,  1454.28,  1713.52,  1936.32,  2021.40,
@@ -38,10 +38,10 @@ const double AwbiDataNonFile::fqData[] = {
   25913.90, 27426.00, 28861.44, 30469.84, 32154.82,
   32921.92, 33252.09, 34064.95, 35648.55, 36952.94,
   38651.41, 40405.48, 41334.97, 40711.61, 41673.83,
-  42979.61, 44321.67, 44888.16
+  42979.61, 44321.67, 44888.16, 46481.52
 };
 
-// <summary>OASDI taxable maximum, 1937-2015.</summary>
+// <summary>OASDI taxable maximum, 1937-2016.</summary>
 const double AwbiDataNonFile::baseOasdiData[] = {
               3000.00,   3000.00,   3000.00,   3000.00,
    3000.00,   3000.00,   3000.00,   3000.00,   3000.00,
@@ -58,19 +58,21 @@ const double AwbiDataNonFile::baseOasdiData[] = {
   62700.00,  65400.00,  68400.00,  72600.00,  76200.00,
   80400.00,  84900.00,  87000.00,  87900.00,  90000.00,
   94200.00,  97500.00, 102000.00, 106800.00, 106800.00,
- 106800.00, 110100.00, 113700.00, 117000.00, 118500.00
+ 106800.00, 110100.00, 113700.00, 117000.00, 118500.00,
+ 118500.00
 };
 
-// <summary>HI taxable maximum, 1991-2015.</summary>
+// <summary>HI taxable maximum, 1991-2016.</summary>
 const double AwbiDataNonFile::baseHiData[] = {
    125000.00, 130200.00, 135000.00,   MAXEARN,   MAXEARN,
      MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,
      MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,
      MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,
-     MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN
+     MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,   MAXEARN,
+     MAXEARN
 };
 
-// <summary>Old-law taxable maximum, 1937-2015.</summary>
+// <summary>Old-law taxable maximum, 1937-2016.</summary>
 const double AwbiDataNonFile::base77Data[] = {
              3000.00,  3000.00,  3000.00,  3000.00,
    3000.00,  3000.00,  3000.00,  3000.00,  3000.00,
@@ -87,7 +89,8 @@ const double AwbiDataNonFile::base77Data[] = {
   46500.00, 48600.00, 50700.00, 53700.00, 56700.00,
   59700.00, 63000.00, 64500.00, 65100.00, 66900.00,
   69900.00, 72600.00, 75900.00, 79200.00, 79200.00,
-  79200.00, 81900.00, 84300.00, 87000.00, 88200.00
+  79200.00, 81900.00, 84300.00, 87000.00, 88200.00,
+  88200.00
 };
 
 /// <summary>Initializes historical parameters info, where the last year of

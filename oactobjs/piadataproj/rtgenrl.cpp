@@ -1,7 +1,7 @@
 // Functions for the <see cref="RtGeneral"/> class - parent of classes to
 // manage one retirement test projection.
 
-// $Id: rtgenrl.cpp 1.47 2015/01/14 09:24:24EST 277133 Development  $
+// $Id: rtgenrl.cpp 1.48 2016/01/11 08:51:04EST 277133 Development  $
 
 #include "rtgenrl.h"
 #include "Resource.h"
@@ -11,7 +11,7 @@
 
 using namespace std;
 
-// <summary>The age 62 monthly exempt amounts, 1951-2015.</summary>
+// <summary>The age 62 monthly exempt amounts, 1951-2016.</summary>
 const double Rtea62m::theAmts[] = {
    50.0,    50.0,   75.0,   75.0,   80.0,  // 1951-1955
    80.0,    80.0,   80.0,  100.0,  100.0,  // 1956-1960
@@ -25,9 +25,10 @@ const double Rtea62m::theAmts[] = {
    690.0,  720.0,  760.0,  800.0,  840.0,  // 1996-2000
    890.0,  940.0,  960.0,  970.0, 1000.0,  // 2001-2005
   1040.0, 1080.0, 1130.0, 1180.0, 1180.0,  // 2006-2010
-  1180.0, 1220.0, 1260.0, 1290.0, 1310.0   // 2011-2015
+  1180.0, 1220.0, 1260.0, 1290.0, 1310.0,  // 2011-2015
+  1310.0                                   // 2016
 };
-// <summary>The age 65 monthly exempt amounts, 1951-2015.</summary>
+// <summary>The age 65 monthly exempt amounts, 1951-2016.</summary>
 const double Rtea65m::theAmts[] = {
     50.0,   50.0,   75.0,   75.0,   80.0,  // 1951-1955
     80.0,   80.0,   80.0,  100.0,  100.0,  // 1956-1960
@@ -41,7 +42,8 @@ const double Rtea65m::theAmts[] = {
   1041.66666, 1125.0, 1208.33333, 1291.66666, 1416.66666,  // 1996-2000
   2083.33333, 2500.0, 2560.0, 2590.0, 2650.0,  // 2001-2005
   2770.0, 2870.0, 3010.0, 3140.0, 3140.0,  // 2006-2010
-  3140.0, 3240.0, 3340.0, 3450.0, 3490.0   // 2011-2015
+  3140.0, 3240.0, 3340.0, 3450.0, 3490.0,  // 2011-2015
+  3490.0                                   // 2016
 };
 
 // <summary>Exempt amounts, 1961-1972.</summary>

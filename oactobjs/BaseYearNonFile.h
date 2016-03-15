@@ -1,7 +1,7 @@
 // Declarations for the <see cref="BaseYearNonFile"/> class to manage the
 // computation year stored internally.
 //
-// $Id: BaseYearNonFile.h 1.36 2015/08/11 09:08:16EDT 277133 Development  $
+// $Id: BaseYearNonFile.h 1.37 2016/01/11 08:51:31EST 277133 Development  $
 
 #pragma once
 
@@ -14,7 +14,7 @@
 /// <summary>Manages the computation year for a pia program where it is
 ///   stored with the code.</summary>
 ///
-/// <remarks>Currently <see cref="YEAR"/> is 2015 and <see cref="TR_YEAR"/>
+/// <remarks>Currently <see cref="YEAR"/> is 2016 and <see cref="TR_YEAR"/>
 /// is 2015. See <see cref="BaseYearFile"/> for a class where the computation
 /// year is stored on disk.</remarks>
 ///
@@ -24,10 +24,10 @@ class BaseYearNonFile : public BaseYear
 public:
   /// <summary>Year for which data has been stored.</summary>
   ///
-  /// <remarks>The value of 2015 means that the December 2014 benefit increase,
-  /// 2013 average wage, and 2015 wage base are available. This is updated in
+  /// <remarks>The value of 2016 means that the December 2015 benefit increase,
+  /// 2014 average wage, and 2016 wage base are available. This is updated in
   /// October after the annual automatic adjustment announcement.</remarks>
-  static const int YEAR = 2015;
+  static const int YEAR = 2016;
   /// <summary>Year of Trustees Report assumptions.</summary>
   ///
   /// <remarks>This is updated when the TR is released, so it is equal to

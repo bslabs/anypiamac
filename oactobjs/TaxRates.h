@@ -1,7 +1,7 @@
 // Declarations for the <see cref="TaxRates"/> class - parent of classes to
 // manage OASDHI tax rates.
 
-// $Id: TaxRates.h 1.17 2012/03/08 10:12:21EST 277133 Development  $
+// $Id: TaxRates.h 1.18 2016/03/09 07:53:44EST 277133 Development  $
 
 #pragma once
 
@@ -36,7 +36,7 @@ public:
     NUMTRUSTFUNDTYPES  // Number of trust fund types.
   };
   /// <summary>Last year that tax rates change.</summary>
-  static const int LAST_TAX_RATE_YEAR = 2013;
+  static const int LAST_TAX_RATE_YEAR = 2019;
   /// <summary>Number of years of historical tax rates.</summary>
   static const int NUMTAXRATES = LAST_TAX_RATE_YEAR - YEAR37 + 1;
 private:

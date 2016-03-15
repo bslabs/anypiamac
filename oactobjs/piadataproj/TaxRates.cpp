@@ -1,16 +1,14 @@
 // Functions for the <see cref="TaxRates"/> class - parent of classes to
 // manage OASDHI tax rates.
 
-// $Id: TaxRates.cpp 1.18 2012/07/30 16:26:53EDT 044579 Development  $
+// $Id: TaxRates.cpp 1.19 2016/03/09 07:53:21EST 277133 Development  $
 
 #include "TaxRates.h"
 #include "wrkrdata.h"
 
 using namespace std;
 
-/// <summary>Last year that tax rates change.</summary>
-const int TaxRates::LAST_TAX_RATE_YEAR;
-/// <summary>Historical OASI employee/employer net rates, 1937-2013.
+/// <summary>Historical OASI employee/employer net rates, 1937-2019.
 /// </summary>
 const double TaxRates::oasieeerrate[] = {
               0.01,    0.01,    0.01,    0.01,  // 1937-40
@@ -28,9 +26,10 @@ const double TaxRates::oasieeerrate[] = {
    0.0526,  0.0535,  0.0535,  0.0535,   0.053,  // 1996-2000
     0.053,   0.053,   0.053,   0.053,   0.053,  // 2001-05
     0.053,   0.053,   0.053,   0.053,   0.053,  // 2006-10
-    0.036,   0.036,   0.053                     // 2011-13
+0.03590323,0.03590323,0.053,   0.053,   0.053,  // 2011-15
+  0.05015, 0.05015, 0.05015,   0.053            // 2016-19
 };
-/// <summary>Historical DI employee/employer net rates, 1937-2013.</summary>
+/// <summary>Historical DI employee/employer net rates, 1937-2019.</summary>
 const double TaxRates::dieeerrate[] = {
               0.00,    0.00,    0.00,    0.00,  // 1937-40
      0.00,    0.00,    0.00,    0.00,    0.00,  // 1941-45
@@ -47,9 +46,10 @@ const double TaxRates::dieeerrate[] = {
    0.0094,  0.0085,  0.0085,  0.0085,   0.009,  // 1996-2000
     0.009,   0.009,   0.009,   0.009,   0.009,  // 2001-05
     0.009,   0.009,   0.009,   0.009,   0.009,  // 2006-10
-    0.006,   0.006,   0.009                     // 2011-13
+0.00609677,0.00609677,0.009,   0.009,   0.009,  // 2011-15
+  0.01185, 0.01185, 0.01185,   0.009            // 2016-19
 };
-/// <summary>Historical HI employee/employer net rates, 1937-2013.</summary>
+/// <summary>Historical HI employee/employer net rates, 1937-2019.</summary>
 const double TaxRates::hieeerrate[] = {
               0.00,    0.00,    0.00,    0.00,  // 1937-40
      0.00,    0.00,    0.00,    0.00,    0.00,  // 1941-45
@@ -66,9 +66,10 @@ const double TaxRates::hieeerrate[] = {
    0.0145,  0.0145,  0.0145,  0.0145,  0.0145,  // 1996-2000
    0.0145,  0.0145,  0.0145,  0.0145,  0.0145,  // 2001-05
    0.0145,  0.0145,  0.0145,  0.0145,  0.0145,  // 2006-10
-   0.0145,  0.0145,  0.0145                     // 2011-13
+   0.0145,  0.0145,  0.0145,  0.0145,  0.0145,  // 2011-15
+   0.0145,  0.0145,  0.0145,  0.0145            // 2016-19
 };
-/// <summary>Historical OASI self-employed net rates, 1937-2013.</summary>
+/// <summary>Historical OASI self-employed net rates, 1937-2019.</summary>
 const double TaxRates::oasiserate[] = {
               0.00,    0.00,    0.00,    0.00,  // 1937-40
      0.00,    0.00,    0.00,    0.00,    0.00,  // 1941-45
@@ -85,9 +86,10 @@ const double TaxRates::oasiserate[] = {
    0.1052,  0.1070,  0.1070,  0.1070,  0.1060,  // 1996-2000
    0.1060,  0.1060,  0.1060,  0.1060,  0.1060,  // 2000-05
    0.1060,  0.1060,  0.1060,  0.1060,  0.1060,  // 2006-10
-   0.0890,  0.0890,  0.1060                     // 2011-13
+0.08890323,0.08890323,0.1060, 0.1060,  0.1060,  // 2011-15
+   0.1003,  0.1003,  0.1003,  0.1060            // 2016-19
 };
-/// <summary>Historical DI self-employed net rates, 1937-2013.</summary>
+/// <summary>Historical DI self-employed net rates, 1937-2019.</summary>
 const double TaxRates::diserate[] = {
               0.00,    0.00,    0.00,    0.00,  // 1937-40
      0.00,    0.00,    0.00,    0.00,    0.00,  // 1941-45
@@ -104,9 +106,10 @@ const double TaxRates::diserate[] = {
    0.0188,  0.0170,  0.0170,  0.0170,  0.0180,  // 1996-2000
    0.0180,  0.0180,  0.0180,  0.0180,  0.0180,  // 2001-05
    0.0180,  0.0180,  0.0180,  0.0180,  0.0180,  // 2006-10
-   0.0150,  0.0150,  0.0180                     // 2011-13
+0.01509677,0.01509677,0.0180, 0.0180,  0.0180,  // 2011-15
+   0.0237,  0.0237,  0.0237,  0.0180            // 2016-19
 };
-/// <summary>Historical HI self-employed net rates, 1937-2013.</summary>
+/// <summary>Historical HI self-employed net rates, 1937-2019.</summary>
 const double TaxRates::hiserate[] = {
               0.00,    0.00,    0.00,    0.00,  // 1937-40
      0.00,    0.00,    0.00,    0.00,    0.00,  // 1941-45
@@ -123,9 +126,10 @@ const double TaxRates::hiserate[] = {
     0.029,   0.029,   0.029,   0.029,   0.029,  // 1996-2000
     0.029,   0.029,   0.029,   0.029,   0.029,  // 2001-05
     0.029,   0.029,   0.029,   0.029,   0.029,  // 2006-10
-    0.029,   0.029,   0.029                     // 2011-13
+    0.029,   0.029,   0.029,   0.029,   0.029,  // 2011-15
+    0.029,   0.029,   0.029,   0.029            // 2016-19
 };
-/// <summary>Historical OASI employee/employer credit, 1937-2013.</summary>
+/// <summary>Historical OASI employee/employer credit, 1937-2019.</summary>
 const double TaxRates::oasieeercredit[] = {
                0.0,     0.0,     0.0,     0.0,  // 1937-40
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1941-45
@@ -142,9 +146,10 @@ const double TaxRates::oasieeercredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-    0.017,   0.017,     0.0                     // 2011-13
+0.01709677,0.01709677,  0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
-/// <summary>Historical DI employee/employer credit, 1937-2013.</summary>
+/// <summary>Historical DI employee/employer credit, 1937-2019.</summary>
 const double TaxRates::dieeercredit[] = {
                0.0,     0.0,     0.0,     0.0,  // 1937-40
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1941-45
@@ -161,9 +166,10 @@ const double TaxRates::dieeercredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-    0.003,   0.003,     0.0                     // 2011-13
+0.00290323,0.00290323,  0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
-/// <summary>Historical HI employee/employer credit, 1937-2013.</summary>
+/// <summary>Historical HI employee/employer credit, 1937-2019.</summary>
 const double TaxRates::hieeercredit[] = {
                0.0,     0.0,     0.0,     0.0,  // 1937-40
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1941-45
@@ -180,9 +186,10 @@ const double TaxRates::hieeercredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-      0.0,     0.0,     0.0                     // 2011-13
+      0.0,     0.0,     0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
-/// <summary>Historical OASI self-employed credits, 1937-2013.</summary>
+/// <summary>Historical OASI self-employed credits, 1937-2019.</summary>
 const double TaxRates::oasisecredit[] = {
                0.0,     0.0,     0.0,     0.0,  // 1937-40
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1941-45
@@ -199,7 +206,8 @@ const double TaxRates::oasisecredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-    0.017,   0.017,     0.0                     // 2011-13
+0.01709677,0.01709677,  0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
 /// <summary>Historical DI self-employed credits, 1937-2013.</summary>
 const double TaxRates::disecredit[] = {
@@ -218,9 +226,10 @@ const double TaxRates::disecredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-    0.003,   0.003,     0.0                     // 2011-13
+0.00290323,0.00290323,  0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
-/// <summary>Historical HI self-employed credits, 1937-2013.</summary>
+/// <summary>Historical HI self-employed credits, 1937-2019.</summary>
 const double TaxRates::hisecredit[] = {
                0.0,     0.0,     0.0,     0.0,  // 1937-40
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1941-45
@@ -237,7 +246,8 @@ const double TaxRates::hisecredit[] = {
       0.0,     0.0,     0.0,     0.0,     0.0,  // 1996-2000
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2001-05
       0.0,     0.0,     0.0,     0.0,     0.0,  // 2006-10
-      0.0,     0.0,     0.0                     // 2011-13
+      0.0,     0.0,     0.0,     0.0,     0.0,  // 2011-15
+      0.0,     0.0,     0.0,     0.0            // 2016-19
 };
 
 /// <summary>Initializes arrays.</summary>

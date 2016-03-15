@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.66 2015/01/14 09:24:23EST 277133 Development  $
+// $Id: awincnf.cpp 1.68 2016/01/11 08:51:04EST 277133 Development  $
 
 #include "AwincNonFile.h"
 #include "avgwg.h"
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// <remarks>Historical average wage increases, 1978-2013.
+// <remarks>Historical average wage increases, 1978-2014.
 // When updating in November, add a value to this array.</remarks>
 const double AwincNonFile::awincHist[] = {
                          7.941048,  8.747891,  9.007392,
@@ -22,41 +22,41 @@ const double AwincNonFile::awincHist[] = {
    4.890539,  5.835092,  5.233866,  5.572834,  5.529993,
    2.385645,  1.002888,  2.444538,  4.648767,  3.659027,
    4.596306,  4.538179,  2.300406, -1.508069,  2.363503,
-   3.133333,  3.122550,  1.278133
+   3.133333,  3.122550,  1.278133,  3.549622
 };
 
-// <remarks>Titles for 2014 Trustees Report update.</remarks>
+// <remarks>Titles for 2015 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2014 Trustees Report Alternative I, updated October 22, 2014",
-  "2014 Trustees Report Alternative II, updated October 22, 2014",
-  "2014 Trustees Report Alternative III, updated October 22, 2014",
-  "No increase beyond 2013 average wage"
+  "2015 Trustees Report Alternative I, updated October 15, 2015",
+  "2015 Trustees Report Alternative II, updated October 15, 2015",
+  "2015 Trustees Report Alternative III, updated October 15, 2015",
+  "No increase beyond 2014 average wage"
 };
 
-// <remarks>Average wage increases for 2014 Trustees Report,
-//  years 2014-2029.</remarks>
+// <remarks>Average wage increases for 2015 Trustees Report,
+//  years 2015-2030.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                               4.649349, 6.590358,
-    6.970935, 6.440273, 5.600868, 5.356319, 5.374384,
-    5.311179, 5.380924, 5.213365, 5.125198, 5.165507,
-    5.213367, 5.282426, 5.308597, 5.303766 },
-  {                               3.673954, 4.855497,
-    4.988718, 4.943590, 4.697040, 4.290207, 4.124733,
-    4.111192, 4.027888, 3.864900, 3.806706, 3.820425,
-    3.867418, 3.935194, 3.960143, 3.952795 },
-  {                               2.238141, 3.135110,
-    3.565391, 3.750973, 3.568653, 3.266973, 3.222751,
-    3.102369, 2.953868, 2.697311, 2.497658, 2.478548,
-    2.530814, 2.598124, 2.622006, 2.612242 },
-  {                0.0, 0.0,
+  {                                         4.034228,
+    6.598148, 6.557036, 6.217073, 5.792026, 5.440171,
+    5.448175, 5.403036, 5.418625, 5.280596, 5.184461,
+    5.203949, 5.247009, 5.284433, 5.285479, 5.279601 },
+  {                                         3.307020,
+    5.370010, 5.059959, 4.873892, 4.663342, 4.430472,
+    4.390742, 4.235980, 4.086872, 3.931861, 3.866273,
+    3.858936, 3.900178, 3.936750, 3.938052, 3.930621 },
+  {                                         1.958005,
+    3.536420, 3.673936, 3.784398, 3.637379, 3.437322,
+    3.624134, 3.377726, 2.939115, 2.502710, 2.554414,
+    2.519468, 2.562591, 2.598720, 2.600055, 2.591206 },
+  {                     0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0 }
+    0.0, 0.0, 0.0, 0.0, 0.0 }
 };
 
-// <summary>Ultimate average wage increases for 2014 Trustees Report.</summary>
+// <summary>Ultimate average wage increases for 2015 Trustees Report.</summary>
 const double AwincNonFile::awincult[NUMASSUMSETS] = {
-   5.2, 3.8, 2.5, 0.0
+   5.2, 3.9, 2.6, 0.0
 };
 
 /// <summary>Initializes projected average wage increase info with latest
