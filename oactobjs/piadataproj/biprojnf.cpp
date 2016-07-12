@@ -1,7 +1,7 @@
 // Functions for the <see cref="BiprojNonFile"/> class to manage projected
 // benefit increases stored in arrays.
 //
-// $Id: biprojnf.cpp 1.70 2016/01/11 08:51:04EST 277133 Development  $
+// $Id: biprojnf.cpp 1.71 2016/06/27 07:23:55EDT 277133 Development  $
 
 #include "BiprojNonFile.h"
 #include "Resource.h"
@@ -13,23 +13,23 @@
 
 using namespace std;
 
-// <summary>Titles for 2015 Trustees Report</summary>
+// <summary>Titles for 2016 Trustees Report</summary>
 const string BiprojNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2015 Trustees Report Alternative I, updated October 15, 2015",
-  "2015 Trustees Report Alternative II, updated October 15, 2015",
-  "2015 Trustees Report Alternative III, updated October 15, 2015",
+  "2016 Trustees Report Alternative I",
+  "2016 Trustees Report Alternative II",
+  "2016 Trustees Report Alternative III",
   "No increase beginning with 2016 benefit increase"
 };
 
-// <remarks>Benefit increases for 2015 Trustees Report, 2016 to 2030</remarks>
+// <remarks>Benefit increases for 2016 Trustees Report, 2016 to 2030</remarks>
 const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  { 3.5, 3.4, 3.4, 3.4, 3.4,
-    3.4, 3.4, 3.4, 3.4, 3.4,
-    3.4, 3.4, 3.4, 3.4, 3.4 },
-  { 3.1, 2.7, 2.7, 2.7, 2.7,
-    2.7, 2.7, 2.7, 2.7, 2.7,
-    2.7, 2.7, 2.7, 2.7, 2.7 },
-  { 2.5, 2.0, 2.0, 2.0, 2.0,
+  { 0.7, 3.7, 3.2, 3.2, 3.2,
+    3.2, 3.2, 3.2, 3.2, 3.2,
+    3.2, 3.2, 3.2, 3.2, 3.2 },
+  { 0.2, 2.9, 2.6, 2.6, 2.6,
+    2.6, 2.6, 2.6, 2.6, 2.6,
+    2.6, 2.6, 2.6, 2.6, 2.6 },
+  { 0.0, 1.9, 2.1, 2.0, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0 },
   { 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -37,9 +37,9 @@ const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
     0.0, 0.0, 0.0, 0.0, 0.0 }
 };
 
-// <remarks>Ultimate benefit increases for 2015 Trustees Report.</remarks>
+// <remarks>Ultimate benefit increases for 2016 Trustees Report.</remarks>
 const double BiprojNonFile::biult[NUMASSUMSETS] = {
-  3.4, 2.7, 2.0, 0.0
+  3.2, 2.6, 2.0, 0.0
 };
 
 /// <summary>Initializes projected benefit increase info for latest Trustees
