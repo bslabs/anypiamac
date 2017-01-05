@@ -1,6 +1,6 @@
 // Constants used in the various Oact C++ programs and utilities.
 //
-// $Id: oactcnst.h 1.18 2015/07/30 11:47:28EDT 729915 Development  $
+// $Id: oactcnst.h 1.19 2016/10/24 08:09:48EDT 277133 Development  $
 
 #pragma once
 
@@ -70,6 +70,9 @@ const int YEAR2085 = 2085;
 
 // <summary>Last possible year of projection.</summary>
 const int YEAR2090 = 2090;
+
+// <summary>Last possible year of projection.</summary>
+const int YEAR2095 = 2095;
 
 // <summary>Last possible year of projection.</summary>
 const int YEAR2100 = 2100;

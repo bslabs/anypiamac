@@ -1,7 +1,7 @@
 // Functions for the <see cref="BiprojNonFile"/> class to manage projected
 // benefit increases stored in arrays.
 //
-// $Id: biprojnf.cpp 1.71 2016/06/27 07:23:55EDT 277133 Development  $
+// $Id: biprojnf.cpp 1.73 2016/12/07 08:09:02EST 277133 Development  $
 
 #include "BiprojNonFile.h"
 #include "Resource.h"
@@ -15,26 +15,30 @@ using namespace std;
 
 // <summary>Titles for 2016 Trustees Report</summary>
 const string BiprojNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2016 Trustees Report Alternative I",
-  "2016 Trustees Report Alternative II",
-  "2016 Trustees Report Alternative III",
-  "No increase beginning with 2016 benefit increase"
+  "2016 Trustees Report Alternative I, updated October 18, 2016",
+  "2016 Trustees Report Alternative II, updated October 18, 2016",
+  "2016 Trustees Report Alternative III, updated October 18, 2016",
+  "No increase beginning with 2017 benefit increase"
 };
 
-// <remarks>Benefit increases for 2016 Trustees Report, 2016 to 2030</remarks>
+// <remarks>Benefit increases for 2016 Trustees Report, 2017 to 2031</remarks>
 const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  { 0.7, 3.7, 3.2, 3.2, 3.2,
+  {      3.7, 3.2, 3.2, 3.2,
     3.2, 3.2, 3.2, 3.2, 3.2,
-    3.2, 3.2, 3.2, 3.2, 3.2 },
-  { 0.2, 2.9, 2.6, 2.6, 2.6,
+    3.2, 3.2, 3.2, 3.2, 3.2,
+    3.2 },
+  {      2.9, 2.6, 2.6, 2.6,
     2.6, 2.6, 2.6, 2.6, 2.6,
-    2.6, 2.6, 2.6, 2.6, 2.6 },
-  { 0.0, 1.9, 2.1, 2.0, 2.0,
+    2.6, 2.6, 2.6, 2.6, 2.6, 
+    2.6 },
+  {      1.9, 2.1, 2.0, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0,
-    2.0, 2.0, 2.0, 2.0, 2.0 },
-  { 0.0, 0.0, 0.0, 0.0, 0.0,
+    2.0, 2.0, 2.0, 2.0, 2.0, 
+    2.0 },
+  {      0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0 }
+    0.0, 0.0, 0.0, 0.0, 0.0, 
+    0.0 }
 };
 
 // <remarks>Ultimate benefit increases for 2016 Trustees Report.</remarks>
@@ -52,8 +56,8 @@ const double BiprojNonFile::biult[NUMASSUMSETS] = {
 BiprojNonFile::BiprojNonFile( int newIstart, int newMaxyear ) :
 Biproj(newIstart, newMaxyear)
 {
-  // Set last year of projected benefit increases, inclusive of TR_YEAR.
-  const int LASTYEAR = BaseYearNonFile::TR_YEAR + NUMPROJYEARS - 1;
+  // Set last year of projected benefit increases, inclusive of YEAR.
+  const int LASTYEAR = BaseYearNonFile::YEAR + NUMPROJYEARS - 1;
   // ensure bounds are great enough to hold data
   const int i1 = min(YEAR79, newIstart);
   const int i2 = max(LASTYEAR, newMaxyear);
@@ -87,8 +91,8 @@ void BiprojNonFile::read( int altNum )
   try {
     // set title
     titletr[altNum - 1] = titletrOriginal[altNum - 1];
-    // Set last year of projected benefit increases, inclusive of TR_YEAR.
-    const int LASTYEAR = BaseYearNonFile::TR_YEAR + NUMPROJYEARS - 1;
+    // Set last year of projected benefit increases, inclusive of YEAR.
+    const int LASTYEAR = BaseYearNonFile::YEAR + NUMPROJYEARS - 1;
     // set values in short-range
     DoubleAnnual& temp = *biprojtr[altNum - 1];
     for (int year = BaseYearNonFile::YEAR; year <= LASTYEAR; year++) {

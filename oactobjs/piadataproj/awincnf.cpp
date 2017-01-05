@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.69 2016/06/27 07:23:22EDT 277133 Development  $
+// $Id: awincnf.cpp 1.71 2016/12/07 08:09:02EST 277133 Development  $
 
 #include "AwincNonFile.h"
 #include "avgwg.h"
@@ -12,7 +12,7 @@
 
 using namespace std;
 
-// <remarks>Historical average wage increases, 1978-2014.
+// <remarks>Historical average wage increases, 1978-2015.
 // When updating in November, add a value to this array.</remarks>
 const double AwincNonFile::awincHist[] = {
                          7.941048,  8.747891,  9.007392,
@@ -22,36 +22,36 @@ const double AwincNonFile::awincHist[] = {
    4.890539,  5.835092,  5.233866,  5.572834,  5.529993,
    2.385645,  1.002888,  2.444538,  4.648767,  3.659027,
    4.596306,  4.538179,  2.300406, -1.508069,  2.363503,
-   3.133333,  3.122550,  1.278133,  3.549622
+   3.133333,  3.122550,  1.278133,  3.549622,  3.479039 
 };
 
 // <remarks>Titles for 2016 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2016 Trustees Report Alternative I",
-  "2016 Trustees Report Alternative II",
-  "2016 Trustees Report Alternative III",
-  "No increase beyond 2014 average wage"
+  "2016 Trustees Report Alternative I, updated October 18, 2016",
+  "2016 Trustees Report Alternative II, updated October 18, 2016",
+  "2016 Trustees Report Alternative III, updated October 18, 2016",
+  "No increase beyond 2015 average wage"
 };
 
 // <remarks>Average wage increases for 2016 Trustees Report,
-//  years 2015-2030.</remarks>
+//  years 2016-2031.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                                         2.704408,
-    3.580773, 6.101725, 6.071134, 5.557643, 5.287264,
+  { 3.580773, 6.101725, 6.071134, 5.557643, 5.287264,
     5.147282, 5.165863, 5.204950, 5.274017, 5.185926,
-    5.107681, 5.129653, 5.151053, 5.154164, 5.142885 },
-  {                                         2.686401,
-    2.914549, 4.776114, 4.782813, 4.473994, 4.282417,
+    5.107681, 5.129653, 5.151053, 5.154164, 5.142885,
+    5.139617 },
+  { 2.914549, 4.776114, 4.782813, 4.473994, 4.282417,
     4.226616, 4.078830, 3.987342, 4.036722, 3.939641,
-    3.862607, 3.881659, 3.901889, 3.906024, 3.897387 },
-  {                                         2.592944,
-    1.283836, 2.525188, 3.833063, 3.674156, 3.408914,
+    3.862607, 3.881659, 3.901889, 3.906024, 3.897387,
+    3.896377 },
+  { 1.283836, 2.525188, 3.833063, 3.674156, 3.408914,
     3.357910, 3.236268, 3.124667, 3.078889, 2.875574,
-    2.651464, 2.634866, 2.658625, 2.663887, 2.658010 },
-  {                     0.0,
+    2.651464, 2.634866, 2.658625, 2.663887, 2.658010,
+    2.659553 },
+  { 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0 }
+    0.0 }
 };
 
 // <summary>Ultimate average wage increases for 2016 Trustees Report.</summary>
@@ -68,8 +68,8 @@ AwincNonFile::AwincNonFile( int newIstart, int newMaxyear ) :
 AwincDoc(newIstart, newMaxyear)
 {
   // Set last year of projected average wage increases, inclusive of
-  // TR_YEAR - 1.
-  const int LASTYEAR = BaseYearNonFile::TR_YEAR + NUMPROJYEARS - 2;
+  // YEAR - 1.
+  const int LASTYEAR = BaseYearNonFile::YEAR + NUMPROJYEARS - 2;
   // ensure bounds are great enough to hold data</summary>
   const int YEAR78 = YEAR79 - 1;
   const int yr1 = min(YEAR78, newIstart);
@@ -107,8 +107,8 @@ void AwincNonFile::read( int altNum )
   try {
     // set title
     titletr[altNum - 1] = titletrOriginal[altNum - 1];
-    // Set last year of projected average wage increases, inclusive of
-    const int LASTYEAR = BaseYearNonFile::TR_YEAR + NUMPROJYEARS - 2;
+    // Set last year of projected average wage increases, inclusive of YEAR
+    const int LASTYEAR = BaseYearNonFile::YEAR + NUMPROJYEARS - 2;
     // set values in short-range
     DoubleAnnual& temp = *awincprojtr[altNum - 1];
     for (int year = BaseYearNonFile::YEAR - 1; year <= LASTYEAR; year++) {
