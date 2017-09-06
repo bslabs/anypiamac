@@ -1,8 +1,9 @@
 // Functions for the <see cref="TaxRatesLC"/> class to manage the Social
 // Security payroll and self-employed tax rates, with changes from present law.
 
-// $Id: TaxRatesLC.cpp 1.12 2011/08/11 08:46:59EDT 044579 Development  $
+// $Id: TaxRatesLC.cpp 1.13 2017/05/12 10:21:39EDT 277133 Development  $
 
+#include <algorithm>
 #include "TaxRatesLC.h"
 #include "LawChangeArray.h"
 #include "LawChangeTAXRATECHG.h"

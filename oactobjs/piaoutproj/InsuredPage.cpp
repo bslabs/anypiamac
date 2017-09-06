@@ -1,7 +1,7 @@
 // Functions for the <see cref="InsuredPage"/> class to manage insured
 // status output.
 
-// $Id: InsuredPage.cpp 1.11.1.1 2012/03/08 07:17:38EST 277133 Development  $
+// $Id: InsuredPage.cpp 1.11.1.2 2017/07/25 07:57:34EDT 277133 Development  $
 
 #include "InsuredPage.h"
 #include "FormatString.h"
@@ -28,7 +28,6 @@ InsuredPage::~InsuredPage()
 /// <summary>Prepares strings for insured status page.</summary>
 void InsuredPage::prepareStrings()
 {
-  char str[20];  // temporary string
   string s;  // temporary string
   try {
     outputString.clear();
@@ -74,20 +73,17 @@ void InsuredPage::prepareStrings()
       outputString.push_back("");
       outputString.push_back("Disability insured status:");
       if (piaData.getQcDisDate3().getYear() > 0) {
-        strncpy(str, piaData.getQcDisDate3().toString().c_str(), 20);
-        AfxFormatString2(s, PIA_IDS_DINS1OUT, str,
+        AfxFormatString2(s, PIA_IDS_DINS1OUT, piaData.getQcDisDate3().toString(),
           piaData.getQcDisDate4().toString());
         outputString.push_back(s);
       }
       if (piaData.getQcDisDate1().getYear() > 0) {
-        strncpy(str, piaData.getQcDisDate1().toString().c_str(), 20);
-        AfxFormatString2(s, PIA_IDS_DINS2OUT, str,
+        AfxFormatString2(s, PIA_IDS_DINS2OUT, piaData.getQcDisDate1().toString(),
           piaData.getQcDisDate2().toString());
         outputString.push_back(s);
       }
       if (piaData.getQcDisDate5().getYear() > 0) {
-        strncpy(str, piaData.getQcDisDate5().toString().c_str(), 20);
-        AfxFormatString2(s, PIA_IDS_DINS3OUT, str,
+        AfxFormatString2(s, PIA_IDS_DINS3OUT, piaData.getQcDisDate5().toString(),
           piaData.getQcDisDate6().toString());
         outputString.push_back(s);
       }

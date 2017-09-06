@@ -1,10 +1,11 @@
 // Functions for the <see cref="ScaledEarnFactors"/> class of scaled
 // earnings factors.
 
-// $Id: ScaledEarnFactors.cpp 1.14 2013/07/17 07:14:19EDT 277133 Development  $
+// $Id: ScaledEarnFactors.cpp 1.15 2017/05/12 10:21:39EDT 277133 Development  $
 
 #include <iomanip>
 #include <fstream>
+#include <algorithm>
 #include "ScaledEarnFactors.h"
 #include "EarnProject.h"
 #include "avgwg.h"

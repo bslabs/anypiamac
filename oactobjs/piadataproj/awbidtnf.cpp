@@ -1,8 +1,9 @@
 // Functions of the <see cref="AwbiDataNonFile"/> class to manage historical
 // Social Security parameters stored with the code.
 //
-// $Id: awbidtnf.cpp 1.46 2016/10/24 08:14:48EDT 277133 Development  $
+// $Id: awbidtnf.cpp 1.47 2017/05/12 10:21:36EDT 277133 Development  $
 
+#include <algorithm>
 #include "AwbiDataNonFile.h"
 #include "PiaException.h"
 #include "Resource.h"

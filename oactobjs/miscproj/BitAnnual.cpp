@@ -1,8 +1,9 @@
 // Functions for the <see cref="BitAnnual"/> class to manage an array of
 // annual bits.
 //
-// $Id: BitAnnual.cpp 1.16 2011/08/11 15:21:17EDT 044579 Development  $
+// $Id: BitAnnual.cpp 1.17 2017/05/12 10:21:58EDT 277133 Development  $
 
+#include <algorithm>
 #include "BitAnnual.h"
 
 using namespace std;

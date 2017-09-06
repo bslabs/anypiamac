@@ -2,8 +2,9 @@
 // handle historical and projected SGA (Substantial Gainful Activity) amounts,
 // stored in arrays.
 
-// $Id: SgaGeneral.cpp 1.12 2011/08/09 15:55:30EDT 044579 Development  $
+// $Id: SgaGeneral.cpp 1.13 2017/05/12 10:21:39EDT 277133 Development  $
 
+#include <algorithm>
 #include <cmath>  // for floor
 #include "SgaGeneral.h"
 

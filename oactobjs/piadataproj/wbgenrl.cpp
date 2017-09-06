@@ -1,8 +1,9 @@
 // Functions for the <see cref="WageBaseGeneral"/> class - parent of classes
 // that manage wage base projections.
 
-// $Id: wbgenrl.cpp 1.28 2015/07/16 07:57:49EDT 729915 Development  $
+// $Id: wbgenrl.cpp 1.29 2017/05/12 10:21:39EDT 277133 Development  $
 
+#include <algorithm>
 #include <cmath>  // for floor
 #include "wbgenrl.h"
 #include "Resource.h"

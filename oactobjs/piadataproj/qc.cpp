@@ -1,8 +1,9 @@
 // Functions for the <see cref="Qc"/> class to manage one annual quarters
 // of coverage number.
 //
-// $Id: qc.cpp 1.27 2012/07/30 16:26:52EDT 044579 Development  $
+// $Id: qc.cpp 1.28 2017/05/12 10:21:38EDT 277133 Development  $
 
+#include <algorithm>
 #include <cmath>  // for floor
 #include "qc.h"
 #include "oactcnst.h"
