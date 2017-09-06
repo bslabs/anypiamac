@@ -5,7 +5,6 @@
 // $Id: DoubleAnnualRW.cpp 1.4 2017/05/12 10:21:58EDT 277133 Development  $
 
 #include <iomanip>
-#include <minmax.h>
 #include "DoubleAnnualRW.h"
 #include "PiaException.h"
 #include "Resource.h"
