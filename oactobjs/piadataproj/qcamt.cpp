@@ -1,7 +1,7 @@
 // Functions for the <see cref="Qcamt"/> class to manage array of amounts
 // required for quarter of coverage.
 //
-// $Id: qcamt.cpp 1.23 2017/05/12 10:21:38EDT 277133 Development  $
+// $Id: qcamt.cpp 1.24 2017/08/29 09:01:26EDT 277133 Development  $
 
 #include <algorithm>
 #include <string>

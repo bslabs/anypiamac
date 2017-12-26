@@ -1,7 +1,7 @@
 // Functions for the <see cref="InsCodeArray"/> class to manage an array
 // of insured status codes.
 //
-// $Id: InsCodeArray.cpp 1.19 2017/05/12 10:21:38EDT 277133 Development  $
+// $Id: InsCodeArray.cpp 1.20 2017/08/29 09:01:43EDT 277133 Development  $
 
 #include <algorithm>
 #include "InsCodeArray.h"

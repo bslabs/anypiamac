@@ -1,7 +1,7 @@
 // Functions for the <see cref="ChildCareCalc"/> class to manage childcare
 // dropout year pia calculations.
 //
-// $Id: ChildCareCalc.cpp 1.36 2011/10/24 16:27:51EDT 044579 Development  $
+// $Id: ChildCareCalc.cpp 1.37 2017/09/18 10:37:20EDT 277133 Development  $
 
 #include "ChildCareCalc.h"
 #include "UserAssumptions.h"
@@ -126,7 +126,7 @@ void ChildCareCalc::calculate()
   // apply benefit increases to PIA
   setYearCpi();
   piaEnt.set(applyColas(piaElig, yr5, workerData.getBenefitDate()));
-  BendPoints::projectMfb(bendMfb, yr5, piaParams.getFqArray());
+  bendMfb.project(yr5, piaParams.getFqArray());
   // calculate the AIME MFB
   setPortionPiaElig(piaElig[yr4], portionPiaElig, bendMfb);
   mfbElig[yr4] = mfbCal(portionPiaElig, percMfb, yr4);

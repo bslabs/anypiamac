@@ -1,7 +1,7 @@
 // Functions for the <see cref="RailRoadData"/> class to manage edited
 // railroad record.
 
-// $Id: railroad.cpp 1.39 2011/10/19 10:15:04EDT 277133 Development  $
+// $Id: railroad.cpp 1.40 2017/12/12 09:21:43EST 277133 Development  $
 
 #include <sstream>
 #include <iomanip>
@@ -154,6 +154,7 @@ std::string RailRoadData::getDecadeEarningsString( int decade, int width,
 int decimals ) const
 {
   ostringstream strm;
+  strm.setf(ios::fixed,ios::floatfield);
   strm.precision(decimals);
   const int startyear = firstYear + 10 * decade;
   const int endyear = min(startyear + 9, lastYear);

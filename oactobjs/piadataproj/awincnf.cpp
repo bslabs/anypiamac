@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.73 2017/08/11 06:59:38EDT 277133 Development  $
+// $Id: awincnf.cpp 1.76 2017/11/28 08:20:25EST 277133 Development  $
 
 #include <algorithm>
 #include "AwincNonFile.h"
@@ -13,7 +13,7 @@
 
 using namespace std;
 
-// <remarks>Historical average wage increases, 1978-2015.
+// <remarks>Historical average wage increases, 1978-2016.
 // When updating in November, add a value to this array.</remarks>
 const double AwincNonFile::awincHist[] = {
                          7.941048,  8.747891,  9.007392,
@@ -23,39 +23,40 @@ const double AwincNonFile::awincHist[] = {
    4.890539,  5.835092,  5.233866,  5.572834,  5.529993,
    2.385645,  1.002888,  2.444538,  4.648767,  3.659027,
    4.596306,  4.538179,  2.300406, -1.508069,  2.363503,
-   3.133333,  3.122550,  1.278133,  3.549622,  3.479039 
+   3.133333,  3.122550,  1.278133,  3.549622,  3.479039,
+   1.130011
 };
 
 // <remarks>Titles for 2017 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2017 Trustees Report Alternative I",
-  "2017 Trustees Report Alternative II",
-  "2017 Trustees Report Alternative III",
-  "No increase beyond 2015 average wage"
+  "2017 Trustees Report Alternative I, updated October 13, 2017",
+  "2017 Trustees Report Alternative II, updated October 13, 2017",
+  "2017 Trustees Report Alternative III, updated October 13, 2017",
+  "No increase beyond 2016 average wage"
 };
 
 // <remarks>Average wage increases for 2017 Trustees Report,
-//  years 2016-2031.</remarks>
+//  years 2017-2032.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  { 2.700514, 4.770865, 6.626917, 6.328037, 5.899260,
+  {           4.770865, 6.626917, 6.328037, 5.899260,
     5.173498, 4.909419, 4.908261, 4.971730, 5.011773,
     5.090761, 5.119535, 5.125365, 5.129495, 5.132657,
-    5.134022
+    5.134022, 5.128879
 	},
-  { 2.632757, 3.948875, 4.840891, 4.507980, 4.467661,
+  {           3.948875, 4.840891, 4.507980, 4.467661,
     4.216208, 3.917278, 3.738280, 3.798211, 3.833913,
     3.817928, 3.870980, 3.876785, 3.881710, 3.886254,
-    3.889731
+    3.889731, 3.886999
 	},
-  { 2.588369, 2.738977, 1.782026, 2.792116, 3.426409,
+  {           2.738977, 1.782026, 2.792116, 3.426409,
     3.119646, 3.003277, 2.873851, 2.845869, 2.721669,
     2.608593, 2.628260, 2.633607, 2.639741, 2.645975,
-    2.651284
+    2.651284, 2.651641
 	},
-  { 0.0, 0.0, 0.0, 0.0, 0.0,
+  {      0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0 }
+    0.0, 0.0 }
 };
 
 // <summary>Ultimate average wage increases for 2017 Trustees Report.</summary>

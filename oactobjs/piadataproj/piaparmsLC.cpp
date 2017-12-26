@@ -1,7 +1,7 @@
 // Functions for the <see cref="PiaParamsLC"/> class to handle changed
 // law PIA parameters.
 
-// $Id: piaparmsLC.cpp 1.80 2011/08/05 16:30:22EDT 044579 Development  $
+// $Id: piaparmsLC.cpp 1.84 2017/10/12 13:06:34EDT 277133 Development  $
 
 #include <cfloat>  // for FLT_MAX
 #include "piaparmsLC.h"
@@ -179,7 +179,7 @@ void PiaParamsLC::setFqBppia()
   LawChangeNEWFORMULA* lawChangeNEWFORMULA = lawChange.lawChangeNEWFORMULA;
   if (lawChangeNEWFORMULA->getInd() > 0) {
     const int firstYear = lawChangeNEWFORMULA->getStartYear() - 2;
-    fqbppia.assign(getFqArray(), 1977, firstYear - 1);
+    fqbppia.assign(getFqArray(), 1977, fqbppia.getLastYear());
     // remainder of bend points are set in projectfq
     return;
   }
@@ -499,15 +499,18 @@ void PiaParamsLC::projectFq()
   PiaParams::projectFq();
   LawChangeNEWFORMULA *lawChangeNEWFORMULA = lawChange.lawChangeNEWFORMULA;
   if (lawChangeNEWFORMULA->getInd() > 0) {
+    double altBp[4];
     const int yr2 =
       min(fqbppia.getLastYear(), lawChangeNEWFORMULA->getEndYear());
     const int yr3 = lawChangeNEWFORMULA->getStartYear();
     for (int yr = yr3; yr <= yr2; yr++) {
-      bpPiaOut.setData(yr, lawChangeNEWFORMULA->getAltBendPia(yr, 1),
-        lawChangeNEWFORMULA->getAltBendPia(yr, 2));
+      for (int i = 0; i < lawChangeNEWFORMULA->getNumBp(); i++) {
+        altBp[i] = lawChangeNEWFORMULA->getAltBendPia(yr, i + 1);
+      }
+      bpPiaOut.setSingleYearData(yr, lawChangeNEWFORMULA->getNumBp(), altBp);
     }
     // project bend points beyond specified ones
-    bpPiaOut.setData(getFqArray(), yr2 + 1);
+    bpPiaOut.setIndexedData(getFqArray(), yr2 + 1, yr2, lawChangeNEWFORMULA->getNumBp());
   }
 }
 
@@ -522,27 +525,30 @@ void PiaParamsLC::projectPerc()
     lawChangeDECLINEPERC->getInd() > 0) {
     int lastYear;  // last year of changing percentages
     int firstYear;  // first year of changing percentages
-    double percTemp[3];
+    double percTemp[5];
+    int numBp = 2;
     if (lawChangeNEWFORMULA->getInd() > 0) {
+      numBp = lawChangeNEWFORMULA->getNumBp();
       lastYear = min(maxyear, lawChangeNEWFORMULA->getEndYear());
       firstYear = lawChangeNEWFORMULA->getStartYear();
       for (int yr = firstYear; yr <= lastYear; yr++) {
-        percPiaOut.setData(yr, lawChangeNEWFORMULA->getAltPercPia(yr, 0),
-          lawChangeNEWFORMULA->getAltPercPia(yr, 1),
-          lawChangeNEWFORMULA->getAltPercPia(yr, 2));
+        for (int i = 0; i <= numBp; i++){
+          percTemp[i] = lawChangeNEWFORMULA->getAltPercPia(yr, i);
+        }
+        percPiaOut.setData(yr, numBp + 1, percTemp);
       }
       // save last percentages
-      percTemp[0] = lawChangeNEWFORMULA->getAltPercPia(lastYear, 0);
-      percTemp[1] = lawChangeNEWFORMULA->getAltPercPia(lastYear, 1);
-      percTemp[2] = lawChangeNEWFORMULA->getAltPercPia(lastYear, 2);
-    }
-    else {
+      for (int i = 0; i <= numBp; i++){
+        percTemp[i] = lawChangeNEWFORMULA->getAltPercPia(lastYear, i);
+      }
+    } else {
       lastYear = min(maxyear, lawChangeDECLINEPERC->getEndYear());
       firstYear = lawChangeDECLINEPERC->getStartYear();
       for (int yr = firstYear; yr <= lastYear; yr++) {
-        percPiaOut.setData(yr, lawChangeDECLINEPERC->getAltPercPia(yr, 0),
-          lawChangeDECLINEPERC->getAltPercPia(yr, 1),
-          lawChangeDECLINEPERC->getAltPercPia(yr, 2));
+        percTemp[0] = lawChangeDECLINEPERC->getAltPercPia(yr, 0);
+        percTemp[1] = lawChangeDECLINEPERC->getAltPercPia(yr, 1);
+        percTemp[2] = lawChangeDECLINEPERC->getAltPercPia(yr, 2);
+        percPiaOut.setData(yr, 3, percTemp);
       }
       // save last percentages
       percTemp[0] = lawChangeDECLINEPERC->getAltPercPia(lastYear, 0);
@@ -551,7 +557,7 @@ void PiaParamsLC::projectPerc()
     }
     // project percentages beyond specified ones
     for (int yr = lastYear + 1; yr <= maxyear; yr++) {
-      percPiaOut.setData(yr, percTemp[0], percTemp[1], percTemp[2]);
+      percPiaOut.setData(yr, numBp + 1, percTemp);
     }
   }
 }

@@ -1,10 +1,10 @@
 // Functions for the <see cref="AnnualArrays"/> class of static functions
 // using annual arrays.
 //
-// $Id: AnnualArrays.cpp 1.4 2017/05/12 10:21:58EDT 277133 Development  $
+// $Id: AnnualArrays.cpp 1.5 2017/08/29 09:03:51EDT 277133 Development  $
 
 #include <sstream>
-#include <minmax.h>
+#include <algorithm>
 #include "AnnualArrays.h"
 #include "dbleann.h"
 #include "intann.h"

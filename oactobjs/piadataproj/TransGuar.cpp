@@ -1,7 +1,7 @@
 // Functions for the <see cref="TransGuar"/> class to manage transitional
 // guarantee pia calculations.
 //
-// $Id: TransGuar.cpp 1.40 2011/08/11 08:46:59EDT 044579 Development  $
+// $Id: TransGuar.cpp 1.41 2017/09/18 10:37:21EDT 277133 Development  $
 
 #include "TransGuar.h"
 #include "piaparms.h"
@@ -21,7 +21,6 @@ OldPia(newWorkerData, newPiaData, newPiaParams, newMaxyear,
 "Transitional Guarantee (1977 Act)", TRANS_GUAR), bendMfb(), percMfb()
 {
   fill_n(portionPiaElig, 4, 0.0);
-  BendPoints::resetMfbPerc(percMfb);
 }
 
 /// <summary>Destructor.</summary>
@@ -32,7 +31,7 @@ TransGuar::~TransGuar()
 void TransGuar::initialize()
 {
   PiaMethod::initialize();
-  bendMfb.assign(0.0);
+  bendMfb.deleteContents();
   fill_n(portionPiaElig, 4, 0.0);
 }
 
@@ -111,7 +110,7 @@ void TransGuar::calculate()
   setTableNum(cpiBase(PiaParams::amend771, true, getAme(), false));
   piaEnt.set(piasub);
   mfbEnt.set(mfbsub);
-  BendPoints::projectMfb(bendMfb, year4, piaParams.getFqArray());
+  bendMfb.project(year4, piaParams.getFqArray());
   piaElig[year3] = piaEnt.get();
   // find AIME MFB from wage-indexed formula
   setPortionPiaElig(piaElig[year3], portionPiaElig, bendMfb);

@@ -2,7 +2,7 @@
 // manage the Social Security parameters required to calculate a Social
 // Security benefit.
 
-// $Id: piaparms.cpp 1.126 2012/09/24 16:36:03EDT 044579 Development 277133(2012/09/26 10:42:50EDT) $
+// $Id: piaparms.cpp 1.129 2017/10/12 13:06:33EDT 277133 Development  $
 
 #include <utility>  // for rel_ops
 #include "piaparms.h"
@@ -686,15 +686,18 @@ void PiaParams::projectFq()
 {
   qcamt.project(fq, 1978);
   bpMfbOut.setData(getFqArray());
-  bpPiaOut.setData(getFqBppia());
+  bpPiaOut.set1979Data(getFqBppia());
 }
 
 /// <summary>Projects benefit formula percentages.</summary>
 void PiaParams::projectPerc()
 {
+  double percTemp[3];
+  percTemp[0] = PercPia::PERC[0];
+  percTemp[1] = PercPia::PERC[1];
+  percTemp[2] = PercPia::PERC[2];
   for (int year = YEAR79; year <= maxyear; year++) {
-    percPiaOut.setData(year, BendPoints::PIAPERC[0], BendPoints::PIAPERC[1],
-      BendPoints::PIAPERC[2]);
+    percPiaOut.setData(year, 3, percTemp);
   }
 }
 
@@ -1652,3 +1655,16 @@ boost::gregorian::date PiaParams::birthDateFRA( int year )
   }
   return boost::gregorian::date((unsigned short)(year-64),1,1);
 }
+
+  /// <summary>Sets benefit formula percents.</summary>
+  ///
+  /// <param name="eligYear">Year of eligibility.</param>
+  /// <param name="percPia">Benefit formula percents.</param>
+  void PiaParams::percPiaCal( int eligYear, PercPia& percPia ) const
+  { 
+    int numPercs = percPiaOut.getNumPercs(eligYear);
+    percPia.setNumPerc(numPercs);
+    for (int i = 0; i < numPercs; i++) {
+      percPia[i] = percPiaOut.getPercPia(eligYear, i + 1);
+    }
+  }

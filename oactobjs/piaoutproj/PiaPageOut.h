@@ -1,7 +1,7 @@
 // Declarations for the <see cref="PiaPageOut"/> class - parent of classes to
 // write out results of a non-Statement benefit calculation.
 
-// $Id: PiaPageOut.h 1.20.1.3 2012/09/25 13:57:06EDT 277133 Development  $
+// $Id: PiaPageOut.h 1.20.1.4 2017/10/12 13:07:41EDT 277133 Development  $
 
 #pragma once
 
@@ -92,7 +92,7 @@ public:
   void nonpenOut( double pubpen, const DateMoyr& pubpenDate );
   void osTableOut( const PiaMethod& piaMethod );
   void piaBpOut ( const BendPia& bendPia );
-  void piaEligOut ( const PercPia& percPia, const double portionAime[],
+  void piaEligOut ( const PercPia& percPia, const PortionAime& portionAime,
     double piaTemp );
   void piaEntOut( double piaentt );
   void piamfb1( const PiaMethod& piaMethod );

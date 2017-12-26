@@ -2,9 +2,10 @@
 // <see cref="DoubleAnnualWrite"/> classes to read or write an array of
 // annual doubles.
 //
-// $Id: DoubleAnnualRW.cpp 1.4 2017/05/12 10:21:58EDT 277133 Development  $
+// $Id: DoubleAnnualRW.cpp 1.5 2017/08/29 09:03:51EDT 277133 Development  $
 
 #include <iomanip>
+#include <algorithm>
 #include "DoubleAnnualRW.h"
 #include "PiaException.h"
 #include "Resource.h"

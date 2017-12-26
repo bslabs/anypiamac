@@ -1,11 +1,12 @@
 // Declarations for the <see cref="PercPiaOut"/> class to manage array of pia
 // formula percentages.
 //
-// $Id: PercPiaOut.h 1.7 2011/08/01 11:38:36EDT 044579 Development  $
+// $Id: PercPiaOut.h 1.9 2017/10/12 12:48:33EDT 277133 Development 277133(2017/11/14 10:37:42EST) $
 
 #pragma once
 
 #include "dbleann.h"
+#include "intann.h"
 #include "avgwg.h"
 
 /// <summary>Manages the array of pia formula percentages, projected for all
@@ -22,26 +23,22 @@ private:
   DoubleAnnual percPia2;
   /// <summary>Array of third pia percentages.</summary>
   DoubleAnnual percPia3;
+  /// <summary>Array of fourth pia percentages.</summary>
+  DoubleAnnual percPia4;
+  /// <summary>Array of fifth pia percentages.</summary>
+  DoubleAnnual percPia5;
+  /// <summary>Array of number of percentages in each year.</summary>
+  IntAnnual numPercs;
 public:
   PercPiaOut( int newLastYear );
   PercPiaOut( int newBaseYear, int newLastYear );
-  /// <summary>Returns first percentage for specified year.</summary>
+  double getPercPia( int year, int index ) const;
+  /// <summary>Returns number of percentages in the PIA formula for a year.
+  /// </summary>
   ///
-  /// <returns>First percentage for specified year.</returns>
+  /// <returns>Number of percentages in PIA formula for a year.</returns>
   ///
-  /// <param name="year">Year for which first percentage is desired.</param>
-  double getPercPia1( int year ) const { return(percPia1[year]); }
-  /// <summary>Returns second percentage for specified year.</summary>
-  ///
-  /// <returns>Second percentage for specified year.</returns>
-  ///
-  /// <param name="year">Year for which second percentage is desired.</param>
-  double getPercPia2( int year ) const { return(percPia2[year]); }
-  /// <summary>Returns third percentage for specified year.</summary>
-  ///
-  /// <returns>Third percentage for specified year.</returns>
-  ///
-  /// <param name="year">Year for which third percentage is desired.</param>
-  double getPercPia3( int year ) const { return(percPia3[year]); }
-  void setData( int year, double perc1, double perc2, double perc3 );
+  /// <param name="year">Year of formula.</param>
+  int getNumPercs( int year ) const { return numPercs[year]; }
+  void setData( int year, int numPerc, double perc[] );
 };

@@ -1,7 +1,7 @@
 // Functions for the <see cref="LawChangeCOLACHANGE"/> class to manage
 // parameters for a proposal to change the cost-of-living benefit increases.
 //
-// $Id: LawChangeCOLACHANGE.cpp 1.15 2011/08/01 10:06:10EDT 044579 Development  $
+// $Id: LawChangeCOLACHANGE.cpp 1.15 2011/08/01 10:06:10EDT 044579 Development 277133(2017/09/13 06:57:37EDT) $
 
 #include <sstream>
 #include "LawChangeCOLACHANGE.h"

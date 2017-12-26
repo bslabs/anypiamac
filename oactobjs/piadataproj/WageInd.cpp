@@ -1,7 +1,7 @@
 // Functions for the <see cref="WageInd"/> class to calculate a wage-indexed
 // PIA.
 
-// $Id: WageInd.cpp 1.39 2011/08/11 13:55:34EDT 044579 Development  $
+// $Id: WageInd.cpp 1.40 2017/09/18 10:37:22EDT 277133 Development  $
 
 #include "WageInd.h"
 #include "UserAssumptions.h"
@@ -147,7 +147,7 @@ void WageInd::calculate()
     Trace::writeLine(strm.str());
   }
 #endif
-  BendPoints::projectMfb(bendMfb, year5, piaParams.getFqArray());
+  bendMfb.project(year5, piaParams.getFqArray());
   // apply totalization
   if (workerData.getTotalize()) {
     prorate();

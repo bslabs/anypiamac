@@ -1,7 +1,7 @@
 // Functions for the <see cref="WageIndGeneral"/> class - parent of classes to
 // manage wage-indexed pia calculations.
 
-// $Id: WageIndGeneral.cpp 1.29 2012/07/30 16:26:53EDT 044579 Development  $
+// $Id: WageIndGeneral.cpp 1.34 2017/11/15 08:25:51EST 277133 Development  $
 
 #include <cmath>  // for floor
 #include <algorithm>
@@ -28,15 +28,11 @@ WageIndGeneral::WageIndGeneral( const WorkerDataGeneral& newWorkerData,
 const PiaData& newPiaData, const PiaParams& newPiaParams, int newMaxyear,
 const std::string& newTitle, pia_type newMethod ) :
 PiaMethod(newWorkerData, newPiaData, newPiaParams, newMaxyear, newTitle,
-newMethod), bendMfb(), bendPia(), percMfb(), percPia(), percWind(),
+newMethod), bendMfb(), bendPia(3), percMfb(), percPia(), percWind(),
 mfbRealWageGain(), piaRealWageGain(), windfallInd(NOWINDFALLELIM),
-yearsTotal(0), indexYearAvgWage(0.0)
+yearsTotal(0), indexYearAvgWage(0.0), portionAime(3)
 {
-  fill_n(portionAime, 3, 0.0);
   fill_n(portionPiaElig, 4, 0.0);
-  BendPoints::resetMfbPerc(percMfb);
-  BendPoints::resetPiaPerc(percPia);
-  BendPoints::resetPiaPerc(percWind);
 }
 
 /// <summary>Destructor.</summary>
@@ -49,9 +45,9 @@ void WageIndGeneral::initialize()
   PiaMethod::initialize();
   windfallInd = NOWINDFALLELIM;
   yearsTotal = 0;
-  bendMfb.assign(0.0);
-  bendPia.assign(0.0);
-  fill_n(portionAime, 3, 0.0);
+  bendMfb.deleteContents();
+  bendPia.deleteContents();
+  portionAime.deleteContents();
   fill_n(portionPiaElig, 4, 0.0);
   indexYearAvgWage = 0.0;
 }
@@ -60,14 +56,15 @@ void WageIndGeneral::initialize()
 /// calculation.</summary>
 void WageIndGeneral::windfallCal()
 {
+  // Set windfall percentages before first bendpoint change.
+  piaParams.percPiaCal(piaData.getEligYear(), percWind);
   // find years of coverage for wep
   yearsTotal = specMinYearsTotalCal();
-  BendPoints::setWindfallPerc(percWind, piaData.getEligYear(),
+  percWind.setWindfallPerc(piaData.getEligYear(),
     workerData.getBenefitDate().getYear(), yearsTotal);
-  if (yearsTotal >= BendPoints::WINDFALL_YEARS) {
+  if (yearsTotal >= PercPia::WINDFALL_YEARS) {
     setWindfall(HAS30YEARS);
-  }
-  else {
+  } else {
     setPiaWindfall();
     int eligYear = piaData.getEligYear() - 1;
     const double halfpension = BenefitAmount::round(
@@ -80,8 +77,7 @@ void WageIndGeneral::windfallCal()
     if (test > piaelt) {
       setWindfall(REDUCEDPERC);
       piaElig[year1] = test;
-    }
-    else {
+    } else {
       setWindfall(ONEHALFPENSION);
       piaElig[year1] = piaelt;
     }
@@ -197,11 +193,11 @@ DoubleAnnual& earnIndexed, const DoubleAnnual& avgWage )
 /// interval.</param>
 /// <param name="percPiaTemp">3 benefit formula percentages.</param>
 /// <param name="year">Year to use for rounding.</param>
-double WageIndGeneral::aimepiaCal( const double portionAime[],
+double WageIndGeneral::aimepiaCal( const PortionAime& portionAime,
 const PercPia& percPiaTemp, int year )
 {
   const double piaelt = inner_product(percPiaTemp.begin(), percPiaTemp.end(),
-    portionAime, 0.0);
+    portionAime.begin(), 0.0);
   return BenefitAmount::round(piaelt, year);
 }
 
@@ -215,8 +211,11 @@ const PercPia& percPiaTemp, int year )
 /// <param name="bendPiaTemp">Benefit formula bend points.</param>
 void WageIndGeneral::bendPointCal( int eligYear, BendPia& bendPiaTemp ) const
 {
-  bendPiaTemp[1] = piaParams.bpPiaOut.getBppia1(eligYear);
-  bendPiaTemp[2] = piaParams.bpPiaOut.getBppia2(eligYear);
+  int numBp = piaParams.bpPiaOut.getNumBend(eligYear);
+  bendPiaTemp.setNumBend(numBp);
+  for (int i = 1; i <= numBp; i++){
+    bendPiaTemp[i] = piaParams.bpPiaOut.getBppia(eligYear, i);
+  }
 }
 
 /// <summary>Applies real-wage-gain adjustment.</summary>
@@ -244,19 +243,71 @@ void WageIndGeneral::realWageGainAdj( int eligYear )
 double WageIndGeneral::deconvertAme( const BendPia& bendPiaTemp,
 const PercPia& percPiaTemp ) const
 {
-  double rv;  // return value
-  if (piasub < percPiaTemp[0] * bendPiaTemp[1]) {
-    rv = piasub / percPiaTemp[0];
+  double rv, temp1, temp2, temp3, temp4;  // return value
+  int numBp = bendPiaTemp.getNumBend();
+
+  switch (numBp) {
+    case 1:
+      temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+      if (piasub < percPiaTemp[0] * bendPiaTemp[1]) {
+        rv = piasub / percPiaTemp[0];
+      } else {
+          rv = (piasub - temp1) / percPiaTemp[1];
+      }
+    break;
+    case 2: 
+      temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+      temp2 = (percPiaTemp[1] - percPiaTemp[2]) * bendPiaTemp[2];
+      if (piasub < percPiaTemp[0] * bendPiaTemp[1]) {
+        rv = piasub / percPiaTemp[0];
+      } else {
+        temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+        if (piasub < (temp1 + percPiaTemp[1] * bendPiaTemp[2])) {
+          rv = (piasub - temp1) / percPiaTemp[1];
+        } else {
+          rv = (piasub - temp1 - temp2) / percPiaTemp[2];
+        }
+      }
+    break;
+    case 3:
+      temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+      temp2 = (percPiaTemp[1] - percPiaTemp[2]) * bendPiaTemp[2];
+      temp3 = (percPiaTemp[2] - percPiaTemp[3]) * bendPiaTemp[3];
+      if (piasub < percPiaTemp[0] * bendPiaTemp[1]) {
+        rv = piasub / percPiaTemp[0];
+      } else {
+        temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+        if (piasub < (temp1 + percPiaTemp[1] * bendPiaTemp[2])) {
+          rv = (piasub - temp1) / percPiaTemp[1];
+        } else if (piasub < (temp1 + temp2 + percPiaTemp[2] * bendPiaTemp[3])) {
+          rv = (piasub - temp1 - temp2) / percPiaTemp[2];
+        } else {
+          rv = (piasub - temp1 - temp2 - temp3) / percPiaTemp[3];
+        }
+      }
+    break;
+    case 4:
+      temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+      temp2 = (percPiaTemp[1] - percPiaTemp[2]) * bendPiaTemp[2];
+      temp3 = (percPiaTemp[2] - percPiaTemp[3]) * bendPiaTemp[3];
+      temp4 = (percPiaTemp[3] - percPiaTemp[4]) * bendPiaTemp[4];
+      if (piasub < percPiaTemp[0] * bendPiaTemp[1]) {
+        rv = piasub / percPiaTemp[0];
+      } else {
+        temp1 = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
+        if (piasub < (temp1 + percPiaTemp[1] * bendPiaTemp[2])) {
+          rv = (piasub - temp1) / percPiaTemp[1];
+        } else if (piasub < (temp1 + temp2 + percPiaTemp[2] * bendPiaTemp[3])){
+          rv = (piasub - temp1 - temp2) / percPiaTemp[2];
+        } else if (piasub < (temp1 + temp2 - temp3 + percPiaTemp[3] * bendPiaTemp[4])){
+          rv = (piasub - temp1 - temp2 - temp3) / percPiaTemp[3];
+        } else {
+          rv = (piasub - temp1 - temp2 - temp3 - temp4) / percPiaTemp[4];
+        }
+      }
+    break;
   }
-  else {
-    double temp = (percPiaTemp[0] - percPiaTemp[1]) * bendPiaTemp[1];
-    if (piasub < (temp + percPiaTemp[1] * bendPiaTemp[2]))
-      rv = (piasub - temp) / percPiaTemp[1];
-    else {
-      rv = (piasub - temp - (percPiaTemp[1] - percPiaTemp[2]) *
-        bendPiaTemp[2]) / percPiaTemp[2];
-    }
-  }
+
   return (piaData.getEligYear() > 1982) ? ceil(rv) : floor(rv);
 }
 
@@ -264,13 +315,37 @@ const PercPia& percPiaTemp ) const
 /// </summary>
 ///
 /// <param name="amesub">Aime to portion.</param>
-/// <param name="aimepart">Parts of the aime.</param>
+/// <param name="aimePart">Parts of the aime.</param>
 /// <param name="bendPiaTemp">Bend points to use.</param>
-void WageIndGeneral::setPortionAime( double amesub, double aimepart[],
+void WageIndGeneral::setPortionAime( double amesub, PortionAime& aimePart,
 const BendPia& bendPiaTemp )
 {
-  aimepart[0] = min(amesub, bendPiaTemp[1]);
-  aimepart[1] = max(0.0, min(amesub - bendPiaTemp[1],
-    bendPiaTemp[2] - bendPiaTemp[1]));
-  aimepart[2] = max(amesub - bendPiaTemp[2], 0.);
+  int numBp = bendPiaTemp.getNumBend();
+  aimePart[0] = min(amesub, bendPiaTemp[1]);
+  switch (numBp) {
+    case 1: 
+      aimePart[1] = max(0.0, amesub - bendPiaTemp[1]);
+      return;
+    case 2:
+      aimePart[1] = max(0.0, min(amesub - bendPiaTemp[1],
+        bendPiaTemp[2] - bendPiaTemp[1]));
+      aimePart[2] = max(amesub - bendPiaTemp[2], 0.);
+    return;    
+    case 3:
+      aimePart[1] = max(0.0, min(amesub - bendPiaTemp[1],
+        bendPiaTemp[2] - bendPiaTemp[1]));
+      aimePart[2] = max(0.0, min(amesub - bendPiaTemp[2],
+        bendPiaTemp[3] - bendPiaTemp[2]));
+      aimePart[3] = max(amesub - bendPiaTemp[3], 0.);
+    return;    
+    case 4:
+      aimePart[1] = max(0.0, min(amesub - bendPiaTemp[1],
+        bendPiaTemp[2] - bendPiaTemp[1]));
+      aimePart[2] = max(0.0, min(amesub - bendPiaTemp[2],
+        bendPiaTemp[3] - bendPiaTemp[2]));
+      aimePart[3] = max(0.0, min(amesub - bendPiaTemp[3],
+        bendPiaTemp[4] - bendPiaTemp[3]));
+      aimePart[4] = max(amesub - bendPiaTemp[4], 0.);
+    return;    
+  }
 }

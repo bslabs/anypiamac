@@ -1,12 +1,14 @@
 // Declarations for the <see cref="PiaMethod"/> class - parent of the various
 // methods required for calculation of a Social Security benefit.
 
-// $Id: PiaMethod.h 1.43 2013/10/29 13:12:18EDT 277133 Development  $
+// $Id: PiaMethod.h 1.44 2017/10/12 12:48:33EDT 277133 Development  $
 
 #pragma once
 
 #include "piadata.h"
-#include "BendPoints.h"
+#include "bendpia.h"
+#include "bendmfb.h"
+#include "PortionAime.h"
 #include "BenefitAmount.h"
 class PiaParams;
 

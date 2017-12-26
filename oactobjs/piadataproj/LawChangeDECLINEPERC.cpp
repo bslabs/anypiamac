@@ -2,16 +2,17 @@
 // parameters for a proposal to decrease the benefit formula percentages by
 // various rates.
 //
-// $Id: LawChangeDECLINEPERC.cpp 1.13 2011/08/01 10:06:06EDT 044579 Development  $
+// $Id: LawChangeDECLINEPERC.cpp 1.14 2017/09/18 10:37:18EDT 277133 Development  $
 
 #include <sstream>
 #include <iomanip>
+#include <algorithm>
 #include "LawChangeDECLINEPERC.h"
 #include "PiaException.h"
 #include "Resource.h"
 #include "oactcnst.h"
 #include "StringParser.h"
-#include "BendPoints.h"
+#include "PercPia.h"
 
 using namespace std;
 
@@ -139,7 +140,7 @@ void LawChangeDECLINEPERC::percPiaCal()
   if (getInd() > 0) {
     for (int i = 0; i < 3; i++) {
       // initialize first percentage
-      (*percpa[i])[getYear(0) - 1] = BendPoints::PIAPERC[i];
+      (*percpa[i])[getYear(0) - 1] = PercPia::PERC[i];
       // handle each interval of declining percentages
       for (int yearNum = 0; yearNum < getInd(); yearNum++) {
         const double factor = 1. - getFactor(yearNum, i) / 100.0;

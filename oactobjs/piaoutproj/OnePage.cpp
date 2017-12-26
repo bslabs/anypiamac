@@ -1,7 +1,7 @@
 // Functions for the <see cref="OnePage"/> class to manage one-page summary
 // of results.
 
-// $Id: OnePage.cpp 1.25.1.2 2012/08/28 07:58:34EDT 277133 Development  $
+// $Id: OnePage.cpp 1.25.1.3 2017/10/12 13:07:40EDT 277133 Development  $
 
 #include "OnePage.h"
 #include "PiaTable.h"
@@ -13,6 +13,8 @@
 #include "boost/date_time/gregorian/gregorian.hpp"
 #include "DateFormatter.h"
 #include "PiaCalAny.h"
+#include "wrkrdata.h"
+#include "PiadataArray.h"
 
 using namespace std;
 
@@ -38,6 +40,8 @@ void OnePage::prepareStrings()
     outputString.clear();
     if (workerData.getJoasdi() == WorkerDataGeneral::PEBS_CALC)
       return;
+    outputString.push_back("");
+    outputString.push_back("");
     switch (workerData.getJoasdi())
     {
     case WorkerDataGeneral::OLD_AGE:
@@ -149,16 +153,13 @@ void OnePage::prepareStrings()
     else {
       strm << "          ";
     }
-    if (piaCal.wageInd != (WageInd*)0) {
-      strm.precision(2);
-      strm << setw(10) << piaCal.wageInd->piaEnt.get();
-    }
-    else {
-      strm << "          ";
-    }
-    strm << setw(13) << setprecision(5) << piaData.getArf() 
-      << setprecision(2) << setw(10) << piaData.unroundedBenefit.get()
+    strm.precision(2);
+    strm << setw(10) << piaData.highPia.get() << asterisk;
+    strm << setw(12) << setprecision(5) << piaData.getArf();
+    if (workerData.getJoasdi() != WorkerData::SURVIVOR) {
+    strm << setprecision(2) << setw(10) << piaData.unroundedBenefit.get()
       << asterisk << setw(10) << piaData.highMfb.get() << asterisk;
+    }
     outputString.push_back(strm.str());
     outputString.push_back("");
     // print footnotes
@@ -197,8 +198,35 @@ void OnePage::prepareStrings()
     // print uninsured message
     nonIns(piaData.getFinsCode2(),workerData,piaData);
     // print disability insured message
-    if (workerData.getJoasdi() == WorkerDataGeneral::DISABILITY)
+    if (workerData.getJoasdi() == WorkerDataGeneral::DISABILITY) {
       disInsOut(piaData);
+    }
+    if (piaCal.widowArray.getFamSize() > 0) {
+      outputString.push_back("");
+      outputString.push_back("");
+      strm.str("");
+      strm << "                      PIA       MFB   raw MBA       MBA    PIFC BIC";
+      outputString.push_back(strm.str());
+      strm.str("");
+      strm << "                   ------    ------   -------    ------    ---- ---";
+      outputString.push_back(strm.str());
+    }
+    for (int i = 0; i < piaCal.widowArray.getFamSize(); i++) {
+      outputString.push_back("");
+      strm.str("");
+      strm << "Family Member ";
+      strm << setprecision(0) << (i + 1);
+      strm << setprecision(2)  << setfill(' ');
+      strm << setw(10) << piaData.highPia.get();
+      strm << setw(10) << piaData.highMfb.get();
+      Secondary *secondary = piaCal.secondaryArray.secondary[i];
+      strm << setw(10) << secondary->getFullBenefit();
+      strm << setw(10) << secondary->getRoundedBenefit();
+      strm << "       " << secondary->pifc.get();
+      // bic from secondary record
+      strm << "   " << secondary->bic.toString();
+      outputString.push_back(strm.str());
+    }
   } catch (PiaException&) {
     throw PiaException(PIA_IDS_ONEPAGE);
   }

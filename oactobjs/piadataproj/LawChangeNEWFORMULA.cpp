@@ -2,7 +2,7 @@
 // parameters for a proposal to change the pia formula bend points and/or
 // percentages.
 //
-// $Id: LawChangeNEWFORMULA.cpp 1.12 2011/08/01 10:06:10EDT 044579 Development  $
+// $Id: LawChangeNEWFORMULA.cpp 1.15 2017/11/13 08:00:21EST 277133 Development  $
 
 #include <sstream>
 #include <iomanip>
@@ -21,10 +21,10 @@ using namespace std;
 LawChangeNEWFORMULA::LawChangeNEWFORMULA() :
 LawChange("new benefit formula")
 {
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 4; i++) {
     bendpAlt[i] = new DoubleAnnual(YEAR37, getEndYearLC());
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     percpAlt[i] = new DoubleAnnual(YEAR37, getEndYearLC());
   }
 }
@@ -34,10 +34,10 @@ LawChange("new benefit formula")
 /// <remarks>Deletes allocated memory.</remarks>
 LawChangeNEWFORMULA::~LawChangeNEWFORMULA()
 {
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < 4; i++) {
     delete bendpAlt[i];
   }
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 5; i++) {
     delete percpAlt[i];
   }
 }
@@ -54,23 +54,34 @@ void LawChangeNEWFORMULA::read( std::istream& infile )
   string str;  // input string
   if (getInd() > 0) {
     vector< string > strvec = getFirstLine(infile);
+    getline(infile, str);
+    if (infile.eof() || infile.fail()) {
+      throw PiaException(PIA_IDS_LAWCHG6);
+    }
+    strvec = parseString(str);
+    if (strvec.size() < 1) {
+      throw PiaException(PIA_IDS_LAWCHG6);
+    }
+    setNumBp(atoi(strvec[0].c_str()));
     for (int i2 = getStartYear(); i2 <= getEndYear(); i2++) {
       getline(infile, str);
-      if (infile.eof() || infile.fail())
+      if (infile.eof() || infile.fail()) {
         throw PiaException(PIA_IDS_LAWCHG6);
+      }
       strvec = parseString(str);
       // set first percentage
-      if (strvec.size() < 5)
+      if (strvec.size() < 2 * numBp + 1) {
         throw PiaException(PIA_IDS_LAWCHG6);
+      }
       // set percentages
-      for (int i1 = 0; i1 < 3; i1++) {
+      for (int i1 = 0; i1 < numBp + 1; i1++) {
         double dtemp = atof(strvec[i1].c_str());
-        setAltPercPia(getStartYear(), i1, dtemp);
+        setAltPercPia(i2, i1, dtemp);
       }
       // set bend points
-      for (int i1 = 1; i1 < 3; i1++) {
-        double dtemp = atof(strvec[i1 + 2].c_str());
-        setAltBendPia(getStartYear(), i1, dtemp);
+      for (int i1 = 1; i1 < numBp + 1; i1++) {
+        double dtemp = atof(strvec[i1 + numBp].c_str());
+        setAltBendPia(i2, i1, dtemp);
       }
     }
   }
@@ -84,13 +95,14 @@ void LawChangeNEWFORMULA::write( std::ostream& out ) const
   if (getInd() > 0) {
     writeFirstLine(out);
     out << endl;
+    out << getNumBp() << endl;
     for (int year = getStartYear(); year <= getEndYear(); year++) {
       out.precision(2);
-      for (int i1 = 0; i1 < 3; i1++) {
+      for (int i1 = 0; i1 <= getNumBp(); i1++) {
         out << setw(4) << getAltPercPia(year, i1) << " ";
       }
       out.precision(0);
-      for (int i1 = 1; i1 < 3; i1++) {
+      for (int i1 = 1; i1 <= getNumBp(); i1++) {
         out << setw(7) << getAltBendPia(year, i1) << " ";
       }
       out << endl;
@@ -118,14 +130,19 @@ std::vector< std::string >& outputString )
       << (getAltPercPia(yr, 0) * 100.0) << "% of first $"
       << setprecision(0) << getAltBendPia(yr, 1) << " of AIME +";
     outputString.push_back(strm.str());
-    strm.str("");
-    strm << setprecision(2) << (getAltPercPia(yr, 1) * 100.0)
-      << "% of AIME up to $" << setprecision(0) << getAltBendPia(yr, 2)
-      << " +";
-    outputString.push_back(strm.str());
-    strm.str("");
-    strm << setprecision(2) << (getAltPercPia(yr, 2) * 100.0)
-      << "% of remainder for those eligible in " << yr;
-    outputString.push_back(strm.str());
+    for (int i = 1; i <= numBp; i++) {
+      if (i == numBp) {
+        strm.str("");
+        strm << setprecision(2) << (getAltPercPia(yr, i) * 100.0)
+          << "% of remainder for those eligible in " << yr;
+        outputString.push_back(strm.str());
+      } else {
+        strm.str("");
+        strm << setprecision(2) << (getAltPercPia(yr, i) * 100.0)
+          << "% of AIME up to $" << setprecision(0) << getAltBendPia(yr, i + 1)
+          << " +";
+        outputString.push_back(strm.str());
+      }
+    }
   }
 }

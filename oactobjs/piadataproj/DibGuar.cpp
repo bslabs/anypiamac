@@ -1,7 +1,7 @@
 // Functions for the <see cref="DibGuar"/> class to manage disability
 // guarantee pia calculations.
 //
-// $Id: DibGuar.cpp 1.14 2011/07/29 15:26:18EDT 044579 Development  $
+// $Id: DibGuar.cpp 1.15 2017/09/18 10:37:23EDT 277133 Development  $
 
 #include "DibGuar.h"
 #include "DebugCase.h"
@@ -28,7 +28,6 @@ rawPia(0.0), rawMfb(0.0), cessationMfbOrig(0.0), cessationMfbConv(0.0),
 entDeathDate()
 {
   initialize();
-  BendPoints::resetMfbPerc(percMfb);
 }
 
 /// <summary>Destructor.</summary>
@@ -192,7 +191,7 @@ double DibGuar::cessationMfbCal( const DisabPeriod& disabPeriod )
     const int numYears = year2 - eligYear;
     rawPia = piaParams.deconvertPia(eligYear, numYears,
       disabPeriod.getCessationPia(), disabPeriod.getCessationDate());
-    BendPoints::projectMfb(bendMfb, eligYear, piaParams.getFqArray());
+    bendMfb.project(eligYear, piaParams.getFqArray());
     setPortionPiaElig(rawPia, portionPiaElig, bendMfb);
     rawMfb = mfbCal(portionPiaElig, percMfb, eligYear - 1);
     mfbElig[eligYear - 1] = rawMfb;
@@ -202,8 +201,7 @@ double DibGuar::cessationMfbCal( const DisabPeriod& disabPeriod )
   case PRE1996_PRE1979_LAST12:
   case PRE1996_POST1978_LAST12:
   case PRE1996_NOTLAST12:
-    BendPoints::projectMfb(bendMfb, piaData.getEligYear(),
-      piaParams.getFqArray());
+    bendMfb.project(piaData.getEligYear(), piaParams.getFqArray());
     setPortionPiaElig(disabPeriod.getCessationPia(), portionPiaElig,
       bendMfb);
     return mfbCal(portionPiaElig, percMfb, piaData.getEligYear() - 1);

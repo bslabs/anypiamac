@@ -1,7 +1,7 @@
 // Functions for the <see cref="BiprojNonFile"/> class to manage projected
 // benefit increases stored in arrays.
 //
-// $Id: biprojnf.cpp 1.75 2017/08/11 06:59:37EDT 277133 Development  $
+// $Id: biprojnf.cpp 1.77 2017/10/19 10:23:43EDT 277133 Development 277133(2017/11/28 08:10:34EST) $
 
 #include <algorithm>
 #include "BiprojNonFile.h"
@@ -16,30 +16,30 @@ using namespace std;
 
 // <summary>Titles for 2017 Trustees Report</summary>
 const string BiprojNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2017 Trustees Report Alternative I",
-  "2017 Trustees Report Alternative II",
-  "2017 Trustees Report Alternative III",
-  "No increase beginning with 2017 benefit increase"
+  "2017 Trustees Report Alternative I, updated October 13, 2017",
+  "2017 Trustees Report Alternative II, updated October 13, 2017",
+  "2017 Trustees Report Alternative III, updated October 13, 2017",
+  "No increase beginning with 2018 benefit increase"
 };
 
-// <remarks>Benefit increases for 2017 Trustees Report, 2017 to 2031</remarks>
+// <remarks>Benefit increases for 2017 Trustees Report, 2018 to 2032</remarks>
 const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {      2.9, 4.0, 3.3, 3.2,
+  {           4.0, 3.3, 3.2,
     3.2, 3.2, 3.2, 3.2, 3.2,
     3.2, 3.2, 3.2, 3.2, 3.2,
-    3.2 },
-  {      2.2, 3.1, 2.6, 2.6,
+    3.2, 3.2 },
+  {           3.1, 2.6, 2.6,
     2.6, 2.6, 2.6, 2.6, 2.6,
     2.6, 2.6, 2.6, 2.6, 2.6, 
-    2.6 },
-  {      1.5, 2.8, 2.1, 2.0,
+    2.6, 2.6 },
+  {           2.8, 2.1, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0, 
-    2.0 },
-  {      0.0, 0.0, 0.0, 0.0,
+    2.0, 2.0 },
+  {           0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 
-    0.0 }
+    0.0, 0.0 }
 };
 
 // <remarks>Ultimate benefit increases for 2017 Trustees Report.</remarks>

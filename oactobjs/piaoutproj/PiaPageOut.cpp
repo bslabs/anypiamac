@@ -1,7 +1,7 @@
 // Functions for the <see cref="PiaPageOut"/> class - parent of classes to
 // write out results of a non-Statement benefit calculation.
 
-// $Id: PiaPageOut.cpp 1.39.1.3 2012/09/25 14:00:59EDT 277133 Development  $
+// $Id: PiaPageOut.cpp 1.39.1.4 2017/10/12 13:07:40EDT 277133 Development  $
 
 #include "PiaPageOut.h"
 #include "FormatString.h"
@@ -651,7 +651,7 @@ void PiaPageOut::piaBpOut( const BendPia& bendPia )
 /// </param>
 /// <param name="piaTemp">Pia at eligibility.</param>
 void PiaPageOut::piaEligOut( const PercPia& percPia,
-const double portionAime[], double piaTemp )
+const PortionAime& portionAime, double piaTemp )
 {
   outputString.push_back("PIA at eligibility = ");
   for (int i = 0; i < 2; i++) {

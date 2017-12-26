@@ -1,7 +1,7 @@
 // Declarations for the <see cref="WageIndGeneral"/> class - parent of classes
 // to manage wage-indexed pia calculations.
 
-// $Id: WageIndGeneral.h 1.15 2011/08/11 13:55:34EDT 044579 Development  $
+// $Id: WageIndGeneral.h 1.16 2017/10/12 12:48:34EDT 277133 Development  $
 
 #pragma once
 
@@ -29,7 +29,7 @@ public:
   /// <summary>Windfall PIA formula percentages.</summary>
   PercPia percWind;
   /// <summary>Portion of AIME in each interval of PIA formula.</summary>
-  double portionAime[3];
+  PortionAime portionAime;
   /// <summary>Portion of AIME PIA in each interval of MFB formula.</summary>
   double portionPiaElig[4];
   /// <summary>MFB at entitlement before real-wage-gain adjustment.</summary>
@@ -48,7 +48,7 @@ public:
     const PiaData& newPiaData, const PiaParams& newPiaParams,
     int newMaxyear, const std::string& newTitle, pia_type newMethod );
   virtual ~WageIndGeneral();
-  double aimepiaCal( const double portionAime[], const PercPia& percPiaTemp,
+  double aimepiaCal( const PortionAime& portionAime, const PercPia& percPiaTemp,
     int year );
   void bendPointCal( int eligYear, BendPia& bendPiaTemp ) const;
   double deconvertAme( const BendPia& bendPiaTemp,
@@ -73,7 +73,7 @@ public:
   void setWindfall( WindfallElimType newWindfall )
   { windfallInd = newWindfall; }
   void windfallCal();
-  static void setPortionAime( double amesub, double aimepart[],
+  static void setPortionAime( double amesub, PortionAime& aimePart,
     const BendPia& bendPiaTemp );
 private:
   WageIndGeneral& operator=( WageIndGeneral& newWageIndGeneral );

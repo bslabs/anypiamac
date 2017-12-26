@@ -1,7 +1,7 @@
 // Functions for the <see cref="WageIndNonFreeze"/> class to calculate a wage-indexed
 // non-freeze PIA.
 
-// $Id: WageIndNonFreeze.cpp 1.3 2015/01/15 07:18:11EST 277133 Development  $
+// $Id: WageIndNonFreeze.cpp 1.4 2017/09/18 10:37:21EDT 277133 Development  $
 
 #include "WageIndNonFreeze.h"
 #include "UserAssumptions.h"
@@ -166,7 +166,7 @@ void WageIndNonFreeze::calculate()
     Trace::writeLine(strm.str());
   }
 #endif
-  BendPoints::projectMfb(bendMfb, year5, piaParams.getFqArray());
+  bendMfb.project(year5, piaParams.getFqArray());
   // apply totalization
   if (workerData.getTotalize()) {
     prorate();

@@ -1,7 +1,7 @@
 // Functions for the <see cref="ScaledEarnFactors"/> class of scaled
 // earnings factors.
 
-// $Id: ScaledEarnFactors.cpp 1.15 2017/05/12 10:21:39EDT 277133 Development  $
+// $Id: ScaledEarnFactors.cpp 1.16 2017/08/29 09:01:26EDT 277133 Development  $
 
 #include <iomanip>
 #include <fstream>

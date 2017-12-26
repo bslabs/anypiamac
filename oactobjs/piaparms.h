@@ -2,7 +2,7 @@
 // manage the Social Security parameters required to calculate a Social
 // Security benefit.
 
-// $Id: piaparms.h 1.103 2011/08/05 16:30:21EDT 044579 Development  $
+// $Id: piaparms.h 1.105 2017/10/12 12:48:33EDT 277133 Development  $
 
 #pragma once
 
@@ -551,14 +551,7 @@ public:
   ///
   /// <param name="year">Year being capped.</param>
   virtual bool needColaCap( int year ) const = 0;
-  /// <summary>Resets benefit formula percents.</summary>
-  ///
-  /// <param name="eligYear">Year of eligibility.</param>
-  /// <param name="percPia">Benefit formula percents.</param>
-  void percPiaCal( int eligYear, PercPia& percPia ) const
-  { percPia[0] = percPiaOut.getPercPia1(eligYear);
-    percPia[1] = percPiaOut.getPercPia2(eligYear);
-    percPia[2] = percPiaOut.getPercPia3(eligYear); }
+  void percPiaCal( int eligYear, PercPia& percPia ) const;
   /// <summary>Projects amounts dependent on benefit increases.</summary>
   virtual void projectCpiinc() = 0;
   virtual void projectFq();

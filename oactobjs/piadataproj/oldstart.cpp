@@ -1,7 +1,7 @@
 // Functions for the <see cref="OldStart"/> class to manage old-start pia
 // calculations.
 //
-// $Id: oldstart.cpp 1.70 2011/08/01 11:38:34EDT 044579 Development  $
+// $Id: oldstart.cpp 1.71 2017/09/18 10:37:19EDT 277133 Development  $
 
 #include <cmath>  // for floor
 #include "OldStart.h"
@@ -38,7 +38,6 @@ pibInc(0)
 {
   fill_n(portionAme, 2, 0.0);
   fill_n(portionPiaElig, 4, 0.0);
-  BendPoints::resetMfbPerc(percMfb);
 }
 
 /// <summary>Destructor.</summary>
@@ -51,7 +50,7 @@ void OldStart::initialize()
   PiaMethod::initialize();
   methodOs = OS1939;
   pib = pibInc = 0.0;
-  bendMfb.assign(0.0);
+  bendMfb.deleteContents();
   fill_n(portionAme, 2, 0.0);
   fill_n(portionPiaElig, 4, 0.0);
 }
@@ -236,8 +235,7 @@ void OldStart::calculate()
     setYearCpi();
     piaEnt.set(applyColas(piaElig, piaData.getEligYear(),
       workerData.getBenefitDate()));
-    BendPoints::projectMfb(bendMfb, piaData.getEligYear(),
-      piaParams.getFqArray());
+    bendMfb.project(piaData.getEligYear(),piaParams.getFqArray());
     // apply totalization
     if (workerData.getTotalize())
       prorate();

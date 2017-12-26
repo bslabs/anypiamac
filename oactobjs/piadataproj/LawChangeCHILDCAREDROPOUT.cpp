@@ -1,7 +1,7 @@
 // Functions for the <see cref="LawChangeCHILDCAREDROPOUT"/> class to
 // manage parameters for a proposal to provide child care dropout years.
 //
-// $Id: LawChangeCHILDCAREDROPOUT.cpp 1.11 2011/07/29 16:27:31EDT 044579 Development  $
+// $Id: LawChangeCHILDCAREDROPOUT.cpp 1.11 2011/07/29 16:27:31EDT 044579 Development 277133(2017/09/13 06:57:37EDT) $
 
 #include <sstream>
 #include "LawChangeCHILDCAREDROPOUT.h"
