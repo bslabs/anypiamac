@@ -13,6 +13,13 @@ and re-saving the file with UNIX line endings (LF) rather than Mac line endings 
 NOTICE: I am not an employee of the Social Security Administration and
 this source code/binary is provided with NO WARRANTY and NO GUARANTEE OF ACCURACY
 
+**Instructions for users**
+---
+A pre-built, ready-to-run binary can be downloaded from the [Releases](https://github.com/bslabs/anypiamac/releases) page. Just download 'Anypia.zip' for the latest release, un-zip the file, and run the Detailed Calculator application. It should be compatible with all Macs running OS X 10.4 through 10.13.
+
+**Instructions for developers**
+---
+
 Supported toolchains:
 - Metrowerks CodeWarrior 9.6 (tested on 10.4)
 - Metrowerks CodeWarrior 10
