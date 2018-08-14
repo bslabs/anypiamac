@@ -1,7 +1,7 @@
 // Functions for the <see cref="Pifc"/> class representing a type of
 // Social Security pia.
 //
-// $Id: Pifc.cpp 1.13 2013/10/29 13:12:47EDT 277133 Development  $
+// $Id: Pifc.cpp 1.14 2018/08/06 06:53:56EDT 277133 Development  $
 
 #include "Pifc.h"
 #include "PiaMethod.h"
@@ -67,7 +67,7 @@ OldStart::OldStartType methodOS, bool bamend90, bool btotalize )
     return ('S');
     break;
   case PiaMethod::WAGE_IND_NON_FREEZE:
-    return ('L');
+    return(indwind > 0 ? '5' : 'L');
     break;
   default:
     return(' ');

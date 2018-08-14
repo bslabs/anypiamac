@@ -1,7 +1,7 @@
 // Functions for the <see cref="PiaCal"/> class - parent of all classes
 // that manage the calculation of a Social Security benefit.
 //
-// $Id: piacal.cpp 1.173 2013/10/29 13:12:46EDT 277133 Development  $
+// $Id: piacal.cpp 1.174 2018/08/06 06:53:55EDT 277133 Development  $
 
 #include <cmath>  // for floor
 #include <utility>  // for rel_ops
@@ -352,9 +352,13 @@ void PiaCal::setPifc()
   const OldStart::OldStartType methodOs =
     (oldStart == static_cast<OldStart *>(0)) ?
     OldStart::OS1939 : oldStart->getMethodOs();
-  const PiaMethod::WindfallElimType windfall =
+  PiaMethod::WindfallElimType windfall =
     (wageInd == static_cast<WageInd *>(0)) ?
     PiaMethod::NOWINDFALLELIM : wageInd->getWindfall();
+  if (piaData.getIappn() == PiaMethod::WAGE_IND_NON_FREEZE) {
+    windfall = (wageIndNonFreeze == static_cast<WageIndNonFreeze *>(0)) ?
+      PiaMethod::NOWINDFALLELIM : wageIndNonFreeze->getWindfall();
+  }
   piaData.setPifc(Pifc::pifcCal(piaData.getIappn(), windfall,
     methodOs, piaData.getAmend90(), workerData.getTotalize()));
 }
