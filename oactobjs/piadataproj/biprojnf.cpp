@@ -1,7 +1,7 @@
 // Functions for the <see cref="BiprojNonFile"/> class to manage projected
 // benefit increases stored in arrays.
 //
-// $Id: biprojnf.cpp 1.78 2018/06/28 10:32:30EDT 277133 Development  $
+// $Id: biprojnf.cpp 1.79 2018/10/16 10:48:41EDT 277133 Development  $
 
 #include <algorithm>
 #include "BiprojNonFile.h"
@@ -14,35 +14,35 @@
 
 using namespace std;
 
-// <summary>Titles for 2017 Trustees Report</summary>
+// <summary>Titles for 2019 Trustees Report</summary>
 const string BiprojNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2018 Trustees Report Alternative I",
-  "2018 Trustees Report Alternative II",
-  "2018 Trustees Report Alternative III",
-  "No increase beginning with 2018 benefit increase"
+  "2018 Trustees Report Alternative I, updated October 11, 2018",
+  "2018 Trustees Report Alternative II, updated October 11, 2018",
+  "2018 Trustees Report Alternative III, updated October 11, 2018",
+  "No increase beginning with 2019 benefit increase"
 };
 
-// <remarks>Benefit increases for 2018 Trustees Report, 2018 to 2032</remarks>
+// <remarks>Benefit increases for 2018 Trustees Report, 2019 to 2033</remarks>
 const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {           3.0, 3.5, 3.2,
+  {                3.5, 3.2,
     3.2, 3.2, 3.2, 3.2, 3.2,
     3.2, 3.2, 3.2, 3.2, 3.2,
-    3.2, 3.2 },
-  {           2.4, 2.7, 2.6,
+    3.2, 3.2, 3.2 },
+  {                2.7, 2.6,
     2.6, 2.6, 2.6, 2.6, 2.6,
     2.6, 2.6, 2.6, 2.6, 2.6, 
-    2.6, 2.6 },
-  {           1.6, 1.7, 2.0,
+    2.6, 2.6, 2.6 },
+  {                1.7, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0,
     2.0, 2.0, 2.0, 2.0, 2.0, 
-    2.0, 2.0 },
-  {           0.0, 0.0, 0.0,
+    2.0, 2.0, 2.0 },
+  {                0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 
-    0.0, 0.0 }
+    0.0, 0.0, 0.0 }
 };
 
-// <remarks>Ultimate benefit increases for 2017 Trustees Report.</remarks>
+// <remarks>Ultimate benefit increases for 2018 Trustees Report.</remarks>
 const double BiprojNonFile::biult[NUMASSUMSETS] = {
   3.2, 2.6, 2.0, 0.0
 };
