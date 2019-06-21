@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.78 2018/10/16 10:48:41EDT 277133 Development  $
+// $Id: awincnf.cpp 1.79 2019/05/22 08:03:17EDT 277133 Development  $
 
 #include <algorithm>
 #include "AwincNonFile.h"
@@ -27,31 +27,31 @@ const double AwincNonFile::awincHist[] = {
    1.130011,  3.453260
 };
 
-// <remarks>Titles for 2018 Trustees Report.</remarks>
+// <remarks>Titles for 2019 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2018 Trustees Report Alternative I, updated October 11, 2018",
-  "2018 Trustees Report Alternative II, updated October 11, 2018",
-  "2018 Trustees Report Alternative III, updated October 11, 2018",
+  "2019 Trustees Report Alternative I",
+  "2019 Trustees Report Alternative II",
+  "2019 Trustees Report Alternative III",
   "No increase beyond 2017 average wage"
 };
 
-// <remarks>Average wage increases for 2018 Trustees Report,
+// <remarks>Average wage increases for 2019 Trustees Report,
 //  years 2018-2033.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                     4.752198, 6.255537, 6.296018,
-    5.993629, 5.498352, 5.352487, 5.317564, 5.377918,
-    5.406575, 5.221944, 5.154130, 5.132409, 5.125221,
-    5.132895, 5.135903, 5.134797
+  {                     3.022124, 5.298414, 6.486062,
+    6.006771, 5.487863, 5.269438, 5.277379, 5.344453,
+    5.413790, 5.454517, 5.255826, 5.156058, 5.136315,
+    5.136581, 5.144837, 5.146247
 	},
-  {                     3.746010, 4.205554, 4.543972,
-    4.519957, 4.427827, 4.375743, 4.324569, 4.265333,
-    4.206222, 3.978307, 3.903107, 3.885128, 3.879770,
-    3.888378, 3.892621, 3.894119			
+  {                     2.925685, 3.995741, 4.701923,
+    4.464226, 4.219320, 4.102540, 4.153087, 4.206941,
+    4.243923, 4.257490, 4.016227, 3.909493, 3.891128,
+    3.892527, 3.901124, 3.902929
 	},
-  {                     2.978696, 0.455678, 2.905817,
-    3.287554, 3.496874, 3.458120, 3.272107, 3.262212,
-    3.238793, 2.882875, 2.662887, 2.643352, 2.640940,
-    2.651002, 2.657093, 2.660864			
+  {                     2.887451, 2.716296, 1.080982,
+    2.794248, 3.551797, 3.513018, 3.481467, 3.366818,
+    3.275859, 3.244652, 2.910991, 2.676726, 2.653469,
+    2.657454, 2.666416, 2.669157
 	},
   {           0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
@@ -60,7 +60,7 @@ const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
   }
 };
 
-// <summary>Ultimate average wage increases for 2018 Trustees Report.</summary>
+// <summary>Ultimate average wage increases for 2019 Trustees Report.</summary>
 const double AwincNonFile::awincult[NUMASSUMSETS] = {
    5.0, 3.8, 2.6, 0.0
 };

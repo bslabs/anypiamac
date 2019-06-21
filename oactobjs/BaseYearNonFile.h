@@ -1,7 +1,7 @@
 // Declarations for the <see cref="BaseYearNonFile"/> class to manage the
 // computation year stored internally.
 //
-// $Id: BaseYearNonFile.h 1.43 2018/10/16 10:47:05EDT 277133 Development  $
+// $Id: BaseYearNonFile.h 1.44 2019/05/22 08:02:30EDT 277133 Development  $
 
 #pragma once
 
@@ -15,7 +15,7 @@
 ///   stored with the code.</summary>
 ///
 /// <remarks>Currently <see cref="YEAR"/> is 2019 and <see cref="TR_YEAR"/>
-/// is 2018. See <see cref="BaseYearFile"/> for a class where the computation
+/// is 2019. See <see cref="BaseYearFile"/> for a class where the computation
 /// year is stored on disk.</remarks>
 ///
 /// <seealso cref="BaseYearFile"/>
@@ -33,7 +33,7 @@ public:
   /// <remarks>This is updated when the TR is released, so it is equal to
   /// <see cref="YEAR"/> from the TR date to October, and 1 less than
   /// <see cref="YEAR"/> from October to the TR date.</remarks>
-  static const int TR_YEAR = 2018;
+  static const int TR_YEAR = 2019;
 public:
   BaseYearNonFile();
   void read();
