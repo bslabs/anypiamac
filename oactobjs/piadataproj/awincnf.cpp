@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.79 2019/05/22 08:03:17EDT 277133 Development  $
+// $Id: awincnf.cpp 1.80 2019/10/28 10:27:09EDT 277133 Development  $
 
 #include <algorithm>
 #include "AwincNonFile.h"
@@ -13,7 +13,7 @@
 
 using namespace std;
 
-// <remarks>Historical average wage increases, 1978-2017.
+// <remarks>Historical average wage increases, 1978-2018.
 // When updating in November, add a value to this array.</remarks>
 const double AwincNonFile::awincHist[] = {
                          7.941048,  8.747891,  9.007392,
@@ -24,39 +24,39 @@ const double AwincNonFile::awincHist[] = {
    2.385645,  1.002888,  2.444538,  4.648767,  3.659027,
    4.596306,  4.538179,  2.300406, -1.508069,  2.363503,
    3.133333,  3.122550,  1.278133,  3.549622,  3.479039,
-   1.130011,  3.453260
+   1.130011,  3.453260,  3.624486
 };
 
 // <remarks>Titles for 2019 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2019 Trustees Report Alternative I",
-  "2019 Trustees Report Alternative II",
-  "2019 Trustees Report Alternative III",
-  "No increase beyond 2017 average wage"
+  "2019 Trustees Report Alternative I, updated October 10, 2019",
+  "2019 Trustees Report Alternative II, updated October 10, 2019",
+  "2019 Trustees Report Alternative III, updated October 10, 2019",
+  "No increase beyond 2018 average wage"
 };
 
 // <remarks>Average wage increases for 2019 Trustees Report,
-//  years 2018-2033.</remarks>
+//  years 2019-2034.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                     3.022124, 5.298414, 6.486062,
+  {                               5.298414, 6.486062,
     6.006771, 5.487863, 5.269438, 5.277379, 5.344453,
     5.413790, 5.454517, 5.255826, 5.156058, 5.136315,
-    5.136581, 5.144837, 5.146247
+    5.136581, 5.144837, 5.146247, 5.138725
 	},
-  {                     2.925685, 3.995741, 4.701923,
+  {                               3.995741, 4.701923,
     4.464226, 4.219320, 4.102540, 4.153087, 4.206941,
     4.243923, 4.257490, 4.016227, 3.909493, 3.891128,
-    3.892527, 3.901124, 3.902929
+    3.892527, 3.901124, 3.902929, 3.898146
 	},
-  {                     2.887451, 2.716296, 1.080982,
+  {                               2.716296, 1.080982,
     2.794248, 3.551797, 3.513018, 3.481467, 3.366818,
     3.275859, 3.244652, 2.910991, 2.676726, 2.653469,
-    2.657454, 2.666416, 2.669157
+    2.657454, 2.666416, 2.669157, 2.665510
 	},
-  {           0.0, 0.0, 0.0,
+  {                0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0
+    0.0, 0.0, 0.0, 0.0
   }
 };
 
