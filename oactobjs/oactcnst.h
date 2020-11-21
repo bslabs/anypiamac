@@ -1,6 +1,6 @@
 // Constants used in the various Oact C++ programs and utilities.
 //
-// $Id: oactcnst.h 1.19 2016/10/24 08:09:48EDT 277133 Development  $
+// $Id: oactcnst.h 1.20 2020/08/21 09:53:00EDT 729915 Development  $
 
 #pragma once
 
@@ -9,13 +9,13 @@
 //
 // <remarks>When using 57, data runs from January 1, 1975 through January 1,
 //   2031.</remarks>
-const int MAXYRSR = 57;
+const int MAXYRSR = 62;
 
 // <summary>Number of years of data in trust fund projections, during-year
 //   basis.</summary>
 //
 // <remarks>When using 56, data runs from 1975 through 2030.</remarks>
-const int MAXYRSR1 = 56;
+const int MAXYRSR1 = 61;
 
 // <summary>Base year for trust fund projection arrays on January 1 basis.
 // </summary>

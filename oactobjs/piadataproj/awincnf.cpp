@@ -1,7 +1,7 @@
 // Functions for the <see cref="AwincNonFile"/> class to manage average
 // wage increases stored in static arrays.
 
-// $Id: awincnf.cpp 1.80 2019/10/28 10:27:09EDT 277133 Development  $
+// $Id: awincnf.cpp 1.82 2020/11/16 07:38:32EST 277133 Development  $
 
 #include <algorithm>
 #include "AwincNonFile.h"
@@ -13,7 +13,7 @@
 
 using namespace std;
 
-// <remarks>Historical average wage increases, 1978-2018.
+// <remarks>Historical average wage increases, 1978-2019.
 // When updating in November, add a value to this array.</remarks>
 const double AwincNonFile::awincHist[] = {
                          7.941048,  8.747891,  9.007392,
@@ -24,45 +24,46 @@ const double AwincNonFile::awincHist[] = {
    2.385645,  1.002888,  2.444538,  4.648767,  3.659027,
    4.596306,  4.538179,  2.300406, -1.508069,  2.363503,
    3.133333,  3.122550,  1.278133,  3.549622,  3.479039,
-   1.130011,  3.453260,  3.624486
+   1.130011,  3.453260,  3.624486,  3.747550
 };
 
-// <remarks>Titles for 2019 Trustees Report.</remarks>
+// <remarks>Titles for 2020 Trustees Report.</remarks>
 const std::string AwincNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2019 Trustees Report Alternative I, updated October 10, 2019",
-  "2019 Trustees Report Alternative II, updated October 10, 2019",
-  "2019 Trustees Report Alternative III, updated October 10, 2019",
-  "No increase beyond 2018 average wage"
+  "2020 Trustees Report Alternative I, updated October 13, 2020",
+  "2020 Trustees Report Alternative II, updated October 13, 2020",
+  "2020 Trustees Report Alternative III, updated October 13, 2020",
+  "No increase beyond 2019 average wage"
 };
 
-// <remarks>Average wage increases for 2019 Trustees Report,
-//  years 2019-2034.</remarks>
+// <remarks>Average wage increases for 2020 Trustees Report,
+//  years 2020-2035.</remarks>
 const double AwincNonFile::awincprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                               5.298414, 6.486062,
-    6.006771, 5.487863, 5.269438, 5.277379, 5.344453,
-    5.413790, 5.454517, 5.255826, 5.156058, 5.136315,
-    5.136581, 5.144837, 5.146247, 5.138725
+  {                                         4.652374,
+    5.781379, 5.585782, 5.001579, 4.991112, 5.007296,
+    5.018997, 5.082249, 5.096352, 4.965271, 4.898298,
+    4.885854, 4.890158, 4.891608, 4.886328, 4.873697
+
 	},
-  {                               3.995741, 4.701923,
-    4.464226, 4.219320, 4.102540, 4.153087, 4.206941,
-    4.243923, 4.257490, 4.016227, 3.909493, 3.891128,
-    3.892527, 3.901124, 3.902929, 3.898146
+  {                                         3.507274,
+    4.440019, 4.107419, 3.842257, 3.794323, 3.818574,
+    3.845632, 3.890928, 3.884013, 3.721822, 3.653663,
+    3.642269, 3.647516, 3.648761, 3.644047, 3.632875
 	},
-  {                               2.716296, 1.080982,
-    2.794248, 3.551797, 3.513018, 3.481467, 3.366818,
-    3.275859, 3.244652, 2.910991, 2.676726, 2.653469,
-    2.657454, 2.666416, 2.669157, 2.665510
+  {                                         1.640522,
+    0.246941, 3.118055, 3.138405, 3.170950, 3.044229,
+    3.022300, 3.020738, 2.893263, 2.605721, 2.423711,
+    2.406852, 2.413564, 2.415318, 2.410942, 2.402296
 	},
-  {                0.0, 0.0,
+  {                     0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0,
-    0.0, 0.0, 0.0, 0.0
+    0.0, 0.0, 0.0, 0.0, 0.0
   }
 };
 
-// <summary>Ultimate average wage increases for 2019 Trustees Report.</summary>
+// <summary>Ultimate average wage increases for 2020 Trustees Report.</summary>
 const double AwincNonFile::awincult[NUMASSUMSETS] = {
-   5.0, 3.8, 2.6, 0.0
+   4.8, 3.5, 2.3, 0.0
 };
 
 /// <summary>Initializes projected average wage increase info with latest

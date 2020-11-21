@@ -1,7 +1,7 @@
 // Functions for the <see cref="BiprojNonFile"/> class to manage projected
 // benefit increases stored in arrays.
 //
-// $Id: biprojnf.cpp 1.81 2019/10/28 10:27:09EDT 277133 Development  $
+// $Id: biprojnf.cpp 1.83 2020/11/16 07:38:32EST 277133 Development  $
 
 #include <algorithm>
 #include "BiprojNonFile.h"
@@ -14,37 +14,33 @@
 
 using namespace std;
 
-// <summary>Titles for 2019 Trustees Report</summary>
+// <summary>Titles for 2020 Trustees Report</summary>
 const string BiprojNonFile::titletrOriginal[NUMASSUMSETS] = {
-  "2019 Trustees Report Alternative I, updated October 10, 2019",
-  "2019 Trustees Report Alternative II, updated October 10, 2019",
-  "2019 Trustees Report Alternative III, updated October 10, 2019",
-  "No increase beginning with 2020 benefit increase"
+  "2020 Trustees Report Alternative I, updated October 13, 2020",
+  "2020 Trustees Report Alternative II, updated October 13, 2020",
+  "2020 Trustees Report Alternative III, updated October 13, 2020",
+  "No increase beginning with 2021 benefit increase"
 };
 
-// <remarks>Benefit increases for 2019 Trustees Report, 2020 to 2034</remarks>
+// <remarks>Benefit increases for 2020 Trustees Report, 2021 to 2035</remarks>
 const double BiprojNonFile::biprojtrOriginal[NUMASSUMSETS][NUMPROJYEARS] = {
-  {                     3.2,
-    3.2, 3.2, 3.2, 3.2, 3.2,
-    3.2, 3.2, 3.2, 3.2, 3.2,
-    3.2, 3.2, 3.2, 3.2 },
-  {                     2.7,
-    2.6, 2.6, 2.6, 2.6, 2.6,
-    2.6, 2.6, 2.6, 2.6, 2.6, 
-    2.6, 2.6, 2.6, 2.6 },
-  {                     2.1,
-    2.0, 2.0, 2.0, 2.0, 2.0,
-    2.0, 2.0, 2.0, 2.0, 2.0, 
-    2.0, 2.0, 2.0, 2.1 },
-  {                     0.0,
-    0.0, 0.0, 0.0, 0.0, 0.0,
+  { 2.9, 3.0, 3.0, 3.0, 3.0,
+    3.0, 3.0, 3.0, 3.0, 3.0,
+    3.0, 3.0, 3.0, 3.0, 3.0 },
+  { 2.5, 2.4, 2.4, 2.4, 2.4,
+    2.4, 2.4, 2.4, 2.4, 2.4, 
+    2.4, 2.4, 2.4, 2.4, 2.4 },
+  { 1.5, 1.6, 1.8, 1.8, 1.8,
+    1.8, 1.8, 1.8, 1.8, 1.8, 
+    1.8, 1.8, 1.8, 1.8, 1.8 },
+  { 0.0, 0.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 0.0, 
-    0.0, 0.0, 0.0, 0.0 }
+    0.0, 0.0, 0.0, 0.0, 0.0 }
 };
 
-// <remarks>Ultimate benefit increases for 2019 Trustees Report.</remarks>
+// <remarks>Ultimate benefit increases for 2020 Trustees Report.</remarks>
 const double BiprojNonFile::biult[NUMASSUMSETS] = {
-  3.2, 2.6, 2.0, 0.0
+  3.0, 2.4, 1.8, 0.0
 };
 
 /// <summary>Initializes projected benefit increase info for latest Trustees
