@@ -9,9 +9,9 @@
 	<key>CFBundleName</key>
 	<string>Anypia</string>
 	<key>CFBundleGetInfoString</key>
-	<string>Anypia version 2020.1</string>
+	<string>Anypia version 2021.1</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2020.1</string>
+	<string>2021.1</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
